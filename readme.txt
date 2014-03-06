@@ -10,7 +10,7 @@ License: GPLv2 or later
 This lightweight plugin will made your Twentythirteen menu sticky on top of page after scroll hits upper border.
 
 == Description ==
-Plugin is designed for Twentythirteen template but should work on any theme, it's using default twentythirteen ".navbar" css class and that should be modified for other themes if different. Original javascript used from http://jsbin.com/omanut/2/edit 
+Plugin is designed for Twentythirteen template but should work on any theme, it's using default twentythirteen ".navbar" css class and that should be modified for other themes if different. Plugin Home + Demo URL: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269 
 
 
 == Installation ==
@@ -22,8 +22,9 @@ If using template other than Twentythirteen open wp-content/plugins/mystickymenu
 "var navbar = document.querySelector('.your_navbar_class');"
 
 Edit /mystickymenu/mystickymenu.css to edit menu style, width, color...
+Original javascript used from http://jsbin.com/omanut/2/edit
 
-Plugin Demo and download URL: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269
+
 
 == Screenshots ==
 1.  screenshot-1.png in plugin folder shows menu when page is opened, and not scrolled.
