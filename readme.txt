@@ -25,4 +25,4 @@ Original javascript used from http://jsbin.com/omanut/2/edit
 == Screenshots ==
 1.  screenshot-1.png in plugin folder shows menu when page is opened, and not scrolled.
 2.  screenshot-2.png shows menu when page is scrolled towards the bottom.
-3.  screenshot-3.jpg shows myStickymenu admin settings page.
+3.  screenshot-3.png shows myStickymenu admin settings page.
