@@ -18,7 +18,7 @@ Plugin Home + Demo URL: http://wordpress.transformnews.com/plugins/mystickymenu-
 
 Install like any other plugin. After install activate.
 
-If using template other than Twenty Thirteen go to Settings / myStiskymenu and change navigation class to .your_navbar_class or #your_navbar_id..
+If using template other than Twenty Thirteen go to Settings / myStickymenu and change navigation class to .your_navbar_class or #your_navbar_id..
 
 Original javascript used from http://jsbin.com/omanut/2/edit
 
