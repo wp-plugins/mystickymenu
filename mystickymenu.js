@@ -1,7 +1,7 @@
-var navbar = document.querySelector('.navbar');
-var origOffsetY = navbar.offsetTop;
+var mysticky_navbar = document.querySelector(mysticky_name.mysticky_string);
+var origOffsetY = mysticky_navbar.offsetTop;
 function onScroll(e) {
-  window.scrollY >= origOffsetY ? navbar.classList.add('myfixed') :
-                                  navbar.classList.remove('myfixed');
+  window.scrollY >= origOffsetY ? mysticky_navbar.classList.add('myfixed') :
+                                  mysticky_navbar.classList.remove('myfixed');
 }
 document.addEventListener('scroll', onScroll);
