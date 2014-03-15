@@ -4,7 +4,7 @@ Donate link: http://wordpress.transformnews.com
 Tags: sticky menu, twentythirteen
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: trunk
+Stable tag: 1.0
 License: GPLv2 or later
 
 This lightweight plugin will made your Twentythirteen menu sticky on top of page after scroll hits upper border.
