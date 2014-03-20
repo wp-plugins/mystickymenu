@@ -1,5 +1,5 @@
 === myStickymenu ===
-Contributors: (Damiroquai)
+Contributors: BRB602
 Donate link: http://wordpress.transformnews.com
 Tags: sticky menu, twentythirteen, twenty-thirteen, plugin, menu
 Requires at least: 3.8
