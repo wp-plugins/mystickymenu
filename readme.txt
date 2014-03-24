@@ -7,7 +7,7 @@ Tested up to: 3.8.1
 Stable tag: 1.3
 License: GPLv2 or later
 
-This lightweight plugin will made your menu sticky on top of page after scroll hits upper border.
+This lightweight plugin will made your menu sticky on top of page, after scroll, when selected sticky class hits upper border.
 
 == Description ==
 Plugin is designed for Twentythirteen template but should work on any theme, it's using default twentythirteen ".navbar" css class and that should be modified for other themes if different. 
