@@ -2,8 +2,8 @@
    /*
     Plugin Name: myStickymenu 
     Plugin URI: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269
-    Description: Simple sticky (fixed on top) menu implementation for default Twentythirteen navigation menu. For other themes, after install go to Settings / myStickymenu and change navigation class to .your_navbar_class or #your_navbar_id.
-    Version: 1.3
+    Description: Simple sticky (fixed on top) menu implementation for default Twentythirteen navigation menu. For other themes, after install go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id.
+    Version: 1.4
     Author: m.r.d.a
     License: GPLv2 or later
     */
@@ -80,10 +80,11 @@ class MyStickyMenuPage
 
 				'mysticky_class_selector' => '.navbar',
 				'myfixed_zindex' => '1000000',
-				'myfixed_width' => '',
+				'myfixed_width' => '100%',
 				'myfixed_bgcolor' => '#F39A30',
 				'myfixed_opacity' => '95',
 				'myfixed_transition_time' => '0.3',
+				'myfixed_fade' => false,
 				'myfixed_disable_small_screen' => false,
 				'myfixed_disable_admin_bar' => false
 
@@ -161,6 +162,13 @@ class MyStickyMenuPage
             'setting_section_id'
         );
 		add_settings_field(
+            'myfixed_fade', 
+            'Fade or slide effect', 
+            array( $this, 'myfixed_fade_callback' ), 
+            'my-stickymenu-settings', 
+            'setting_section_id'
+        );	
+		add_settings_field(
             'myfixed_disable_small_screen', 
             'Enable at Small Screen Sizes', 
             array( $this, 'myfixed_disable_small_screen_callback' ), 
@@ -173,7 +181,7 @@ class MyStickyMenuPage
             array( $this, 'myfixed_disable_admin_bar_callback' ), 
             'my-stickymenu-settings', 
             'setting_section_id'
-        );	
+        );
     }
 	
     /**
@@ -201,6 +209,9 @@ class MyStickyMenuPage
 			
 		if( isset( $input['myfixed_transition_time'] ) )
             $new_input['myfixed_transition_time'] = sanitize_text_field( $input['myfixed_transition_time'] );
+			
+		if( isset( $input['myfixed_fade'] ) )
+            $new_input['myfixed_fade'] = sanitize_text_field( $input['myfixed_fade'] );
 			
 		if( isset( $input['myfixed_disable_small_screen'] ) )
             $new_input['myfixed_disable_small_screen'] = sanitize_text_field( $input['myfixed_disable_small_screen'] );
@@ -241,7 +252,7 @@ class MyStickyMenuPage
 	public function myfixed_width_callback()
     {
         printf(
-            '<input type="text" id="myfixed_width" name="mysticky_option_name[myfixed_width]" value="%s" /> sticky width in px or percentage, leave empty for default' ,
+            '<input type="text" id="myfixed_width" name="mysticky_option_name[myfixed_width]" value="%s" /> sticky width in px or percentage' ,
             isset( $this->options['myfixed_width'] ) ? esc_attr( $this->options['myfixed_width']) : ''
         );
     }
@@ -270,9 +281,18 @@ class MyStickyMenuPage
         );
     }
 	
+	public function myfixed_fade_callback()
+	{
+		printf(
+			'<input id="%1$s" name="mysticky_option_name[myfixed_fade]" type="checkbox" %2$s /> Checked is fade, unchecked is slide.',
+			'myfixed_fade',
+			checked( isset( $this->options['myfixed_fade'] ), true, false )
+		);
+	} 
+	
 	public function myfixed_disable_small_screen_callback()
 	{
-	printf(
+		printf(
 			'<input id="%1$s" name="mysticky_option_name[myfixed_disable_small_screen]" type="checkbox" %2$s /> Enable mysticky menu on small resolutions, less than 359px, default unchecked.',
 			'myfixed_disable_small_screen',
 			checked( isset( $this->options['myfixed_disable_small_screen'] ), true, false )
@@ -280,7 +300,7 @@ class MyStickyMenuPage
 	}
 	public function myfixed_disable_admin_bar_callback()
 	{
-	printf(
+		printf(
 			'<input id="%1$s" name="mysticky_option_name[myfixed_disable_admin_bar]" type="checkbox" %2$s /> Select this only if your theme does not show fixed admin bar on frontpage, default unchecked.',
 			'myfixed_disable_admin_bar',
 			checked( isset( $this->options['myfixed_disable_admin_bar'] ), true, false )
@@ -313,20 +333,17 @@ add_filter('the_content_more_link', 'mysticky_remove_more_jump_link');
 function mysticky_build_stylesheet_content() {
 	$mysticky_options = get_option( 'mysticky_option_name' );
     echo
-	'<style type="text/css">
-	';
+	'<style type="text/css">';
 	if  ($mysticky_options ['myfixed_disable_admin_bar'] == false ){
 	echo
-	'#wpadminbar {
-		position: absolute !important;
-		top: 0px !important;
-		}
+	'	#wpadminbar { position: absolute !important; top: 0px !important;}
 	';
 	}
 	echo
 	'.myfixed {
-		position: fixed;
+		position: fixed!important;
 		top: 0px!important;
+		left: 0px!important;
 		margin-top: 0px!important;
 		z-index: '. $mysticky_options ['myfixed_zindex'] .'; 
 		-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=' . $mysticky_options ['myfixed_opacity'] . ')";
@@ -335,11 +352,12 @@ function mysticky_build_stylesheet_content() {
 	';
 	if  ($mysticky_options ['myfixed_width'] >= 1 ){
     echo
-		'width:' . $mysticky_options ['myfixed_width'] . '!important;
+		'	width:' . $mysticky_options ['myfixed_width'] . '!important;
+			
 	';
 	}
 	echo
-		'background-color: ' . $mysticky_options ['myfixed_bgcolor'] . '!important;
+		'	background-color: ' . $mysticky_options ['myfixed_bgcolor'] . '!important;
 		-webkit-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's;
 		-moz-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's;
 		-o-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's;
@@ -350,6 +368,14 @@ function mysticky_build_stylesheet_content() {
 	echo
 	'@media (max-width: 359px) {.myfixed {position: static!important;}}
 	';
+	}
+	echo
+	'#mysticky_wrap { width:100%; }
+	';
+	
+	if  ($mysticky_options ['myfixed_fade'] == false ){
+	echo
+	''. $mysticky_options ['mysticky_class_selector'] . '{ top: -100px; width:100%; position: static; }';
 	}
 	echo '</style>
 	';
@@ -369,8 +395,7 @@ wp_enqueue_script( 'mystickymenu' );
 		$mysticky_translation_array = array( 'mysticky_string' => $mysticky_options['mysticky_class_selector'] );
 		
 wp_localize_script( 'mystickymenu', 'mysticky_name', $mysticky_translation_array );
-
 }
-add_action( 'wp_enqueue_scripts', 'mystickymenu_script' );
 
+add_action( 'wp_enqueue_scripts', 'mystickymenu_script' );
 ?>
