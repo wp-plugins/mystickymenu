@@ -375,7 +375,7 @@ function mysticky_build_stylesheet_content() {
 	
 	if  ($mysticky_options ['myfixed_fade'] == false ){
 	echo
-	''. $mysticky_options ['mysticky_class_selector'] . '{ top: -100px; width:100%; position: static; }';
+	''. $mysticky_options ['mysticky_class_selector'] . '{ top: -100px; width:100%; position: static; max-width: 100% !important; }';
 	}
 	echo '</style>
 	';
