@@ -3,7 +3,7 @@ Contributors: damiroquai
 Donate link: http://wordpress.transformnews.com
 Tags: sticky menu, twentythirteen, twenty-thirteen, plugin, menu
 Requires at least: 3.8
-Tested up to: 3.8.3
+Tested up to: 3.9
 Stable tag: 1.4
 License: GPLv2 or later
 
