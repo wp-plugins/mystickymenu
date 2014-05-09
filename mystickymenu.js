@@ -2,20 +2,20 @@
 var mysticky_navbar = document.querySelector(mysticky_name.mysticky_string);
 
 // add mysticky_wrap div around selected mysticky class
-var parent = mysticky_navbar.parentNode;
-var wrapper = document.createElement('div');
+var myparent = mysticky_navbar.parentNode;
+var mywrapper = document.createElement('div');
 var position = 0;
-for(var i = 0; i < parent.childNodes.length; i++) {
-  if(parent.childNodes[i] == mysticky_navbar) {
+for(var i = 0; i < myparent.childNodes.length; i++) {
+  if(myparent.childNodes[i] == mysticky_navbar) {
     position = i;
     break;
   };
 };
-wrapper.id = 'mysticky_wrap';
-wrapper.appendChild(mysticky_navbar);
-parent.insertBefore(wrapper, parent.childNodes[position]);
+mywrapper.id = 'mysticky_wrap';
+mywrapper.appendChild(mysticky_navbar);
+myparent.insertBefore(mywrapper, myparent.childNodes[position]);
 var mydivHeight = ((mysticky_navbar.offsetHeight) + 'px');
-wrapper.style.height = mydivHeight;
+mywrapper.style.height = mydivHeight;
 
 // add myfixed class to selected mysticky class
 var origOffsetY = mysticky_navbar.offsetTop + 100;
