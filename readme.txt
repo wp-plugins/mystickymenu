@@ -3,8 +3,8 @@ Contributors: damiroquai
 Donate link: http://wordpress.transformnews.com
 Tags: sticky menu, twentythirteen, twenty-thirteen, plugin, menu
 Requires at least: 3.8
-Tested up to: 3.9
-Stable tag: 1.4
+Tested up to: 3.9.1
+Stable tag: 1.5
 License: GPLv2 or later
 
 This lightweight plugin will made your menu sticky on top of page, after scroll, when selected sticky class hits upper border.

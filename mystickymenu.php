@@ -3,7 +3,7 @@
     Plugin Name: myStickymenu 
     Plugin URI: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269
     Description: Simple sticky (fixed on top) menu implementation for default Twentythirteen navigation menu. For other themes, after install go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id.
-    Version: 1.4
+    Version: 1.5
     Author: m.r.d.a
     License: GPLv2 or later
     */
@@ -67,33 +67,6 @@ class MyStickyMenuPage
         <?php
     }
 	
-/**
-     * Load Defaults
-     */ 	
-	public function mysticky_default_options() {
-		
-		global $options;
-
-		if ( false ===  get_option('mysticky_option_name')  ) {
-
-			$default = array(
-
-				'mysticky_class_selector' => '.navbar',
-				'myfixed_zindex' => '1000000',
-				'myfixed_width' => '100%',
-				'myfixed_bgcolor' => '#F39A30',
-				'myfixed_opacity' => '95',
-				'myfixed_transition_time' => '0.3',
-				'myfixed_fade' => false,
-				'myfixed_disable_small_screen' => false,
-				'myfixed_disable_admin_bar' => false
-
-			);
-
-			add_option( 'mysticky_option_name', $default );
-		}
-	}
-
     /**
      * Register and add settings
      */
@@ -130,14 +103,6 @@ class MyStickyMenuPage
             'setting_section_id'
         );
 		
-		 add_settings_field(
-            'myfixed_width', 
-            'Sticky Width', 
-            array( $this, 'myfixed_width_callback' ), 
-            'my-stickymenu-settings', 
-            'setting_section_id'
-        ); 
-		
 		add_settings_field(
             'myfixed_bgcolor', 
             'Sticky Background Color', 
@@ -170,15 +135,15 @@ class MyStickyMenuPage
         );	
 		add_settings_field(
             'myfixed_disable_small_screen', 
-            'Enable at Small Screen Sizes', 
+            'Disable at Small Screen Sizes', 
             array( $this, 'myfixed_disable_small_screen_callback' ), 
             'my-stickymenu-settings', 
             'setting_section_id'
         );
 		add_settings_field(
-            'myfixed_disable_admin_bar', 
-            'Remove CSS Rules for Static Admin Bar while Sticky', 
-            array( $this, 'myfixed_disable_admin_bar_callback' ), 
+            'myfixed_cssstyle', 
+            '.myfixed css class', 
+            array( $this, 'myfixed_cssstyle_callback' ), 
             'my-stickymenu-settings', 
             'setting_section_id'
         );
@@ -198,9 +163,6 @@ class MyStickyMenuPage
         if( isset( $input['myfixed_zindex'] ) )
             $new_input['myfixed_zindex'] = absint( $input['myfixed_zindex'] );
 			
-		if( isset( $input['myfixed_width'] ) )
-            $new_input['myfixed_width'] = sanitize_text_field( $input['myfixed_width'] );
-			
 		if( isset( $input['myfixed_bgcolor'] ) )
             $new_input['myfixed_bgcolor'] = sanitize_text_field( $input['myfixed_bgcolor'] );
 			
@@ -215,19 +177,45 @@ class MyStickyMenuPage
 			
 		if( isset( $input['myfixed_disable_small_screen'] ) )
             $new_input['myfixed_disable_small_screen'] = sanitize_text_field( $input['myfixed_disable_small_screen'] );
-			
-		if( isset( $input['myfixed_disable_admin_bar'] ) )
-            $new_input['myfixed_disable_admin_bar'] = sanitize_text_field( $input['myfixed_disable_admin_bar'] );
-
+		
+		if( isset( $input['myfixed_cssstyle'] ) )
+            //$new_input['myfixed_cssstyle'] = esc_textarea( $input['myfixed_cssstyle'] );
+             $new_input['myfixed_cssstyle'] = sanitize_text_field( $input['myfixed_cssstyle'] );
         return $new_input;
     }
+	
+	 /**
+     * Load Defaults
+     */ 	
+	public function mysticky_default_options() {
+		
+		global $options;
+
+		if ( get_option('mysticky_option_name') == false ) {	
+		
+		$default = array(
+
+				'mysticky_class_selector' => '.navbar',
+				'myfixed_zindex' => '1000000',
+				'myfixed_bgcolor' => '#F39A30',
+				'myfixed_opacity' => '95',
+				'myfixed_transition_time' => '0.3',
+				'myfixed_cssstyle' => '.myfixed {margin: 0 auto!important; float:none!important; border:0px!important; background:none!important; max-width: 100%!important;}',
+				'myfixed_fade' => 'on',
+				'myfixed_disable_small_screen' => '359'
+			);
+
+			update_option( 'mysticky_option_name', $default );		
+		}
+	}
+
 
     /** 
      * Print the Section text
      */
     public function print_section_info()
     {
-        print 'Change myStickymenu options to suite your needs. Default plugin settings work for Twenty Thirteen theme. For other themes you will probably need to change sticky class, please note that some options may be overriden by your theme css. Use .myfixed class in theme or theme child stylesheet for sticky menu if you need extra css settings.';
+        print 'Add nice modern sticky menu or header to any theme. Defaults works for Twenty Thirteen theme. <br />For other themes change "Sticky Class" to div class desired to be sticky (div id can be used too).';
     }
 
     /** 
@@ -236,7 +224,7 @@ class MyStickyMenuPage
     public function mysticky_class_selector_callback()
     {
         printf(
-            '<input type="text" id="mysticky_class_selector" name="mysticky_option_name[mysticky_class_selector]" value="%s" /> .navbar for Twenty Thirteen template, for other templates inspect your code to find apropriate menu/navigation bar class or id.',
+            '<input type="text" id="mysticky_class_selector" name="mysticky_option_name[mysticky_class_selector]" value="%s" /> .navbar for Twenty Thirteen theme, for other themes change to menu or header div class or id.',
             isset( $this->options['mysticky_class_selector'] ) ? esc_attr( $this->options['mysticky_class_selector']) : '' 
         );
     }
@@ -244,23 +232,15 @@ class MyStickyMenuPage
     public function myfixed_zindex_callback()
     {
         printf(
-            '<input type="text" id="myfixed_zindex" name="mysticky_option_name[myfixed_zindex]" value="%s" /> sticky z-index, default 1000000',
+            '<input type="text" id="myfixed_zindex" name="mysticky_option_name[myfixed_zindex]" value="%s" /> sticky z-index.',
             isset( $this->options['myfixed_zindex'] ) ? esc_attr( $this->options['myfixed_zindex']) : ''
-        );
-    }
-	
-	public function myfixed_width_callback()
-    {
-        printf(
-            '<input type="text" id="myfixed_width" name="mysticky_option_name[myfixed_width]" value="%s" /> sticky width in px or percentage' ,
-            isset( $this->options['myfixed_width'] ) ? esc_attr( $this->options['myfixed_width']) : ''
         );
     }
 	
 	public function myfixed_bgcolor_callback()
     {
         printf(
-            '<input type="text" id="myfixed_bgcolor" name="mysticky_option_name[myfixed_bgcolor]" value="%s" /> default #F39A30' ,
+            '<input type="text" id="myfixed_bgcolor" name="mysticky_option_name[myfixed_bgcolor]" value="%s" /> full width background color.' ,
             isset( $this->options['myfixed_bgcolor'] ) ? esc_attr( $this->options['myfixed_bgcolor']) : ''
         );
     }
@@ -268,7 +248,7 @@ class MyStickyMenuPage
 	public function myfixed_opacity_callback()
     {
         printf(
-            '<input type="text" id="myfixed_opacity" name="mysticky_option_name[myfixed_opacity]" value="%s" /> numbers 1-100, default 95',
+            '<input type="text" id="myfixed_opacity" name="mysticky_option_name[myfixed_opacity]" value="%s" /> numbers 1-100.',
             isset( $this->options['myfixed_opacity'] ) ? esc_attr( $this->options['myfixed_opacity']) : ''
         );
     }
@@ -276,7 +256,7 @@ class MyStickyMenuPage
 	public function myfixed_transition_time_callback()
     {
         printf(
-            '<input type="text" id="myfixed_transition_time" name="mysticky_option_name[myfixed_transition_time]" value="%s" /> in seconds, default 0.3',
+            '<input type="text" id="myfixed_transition_time" name="mysticky_option_name[myfixed_transition_time]" value="%s" /> in seconds.',
             isset( $this->options['myfixed_transition_time'] ) ? esc_attr( $this->options['myfixed_transition_time']) : ''
         );
     }
@@ -293,19 +273,21 @@ class MyStickyMenuPage
 	public function myfixed_disable_small_screen_callback()
 	{
 		printf(
-			'<input id="%1$s" name="mysticky_option_name[myfixed_disable_small_screen]" type="checkbox" %2$s /> Enable mysticky menu on small resolutions, less than 359px, default unchecked.',
-			'myfixed_disable_small_screen',
-			checked( isset( $this->options['myfixed_disable_small_screen'] ), true, false )
+		'less than <input type="text" size="4" id="myfixed_disable_small_screen" name="mysticky_option_name[myfixed_disable_small_screen]" value="%s" /> px, 0  to disable.',
+            isset( $this->options['myfixed_disable_small_screen'] ) ? esc_attr( $this->options['myfixed_disable_small_screen']) : ''
 		);
 	}
-	public function myfixed_disable_admin_bar_callback()
-	{
-		printf(
-			'<input id="%1$s" name="mysticky_option_name[myfixed_disable_admin_bar]" type="checkbox" %2$s /> Select this only if your theme does not show fixed admin bar on frontpage, default unchecked.',
-			'myfixed_disable_admin_bar',
-			checked( isset( $this->options['myfixed_disable_admin_bar'] ), true, false )
-		);
-	} 
+
+   public function myfixed_cssstyle_callback()
+   
+    {
+        printf(
+            '
+			Edit .myfixed css class to change your menu style while sticky. <br /><textarea type="text" rows="4" cols="60" id="myfixed_cssstyle" name="mysticky_option_name[myfixed_cssstyle]">%s</textarea> <br />Defaults are fail safe settings and works in most themes although not all settings are required and some may be removed.<br />For example if you want to change default menu hover color while sticky add: .myfixed li a:hover {color:#000;background-color: #ccc ;} .<br />More examples <a href="http://wordpress.transformnews.com/tutorials/mystickymenu-extended-style-functionality-using-myfixed-sticky-class-403" target="blank">here</a>	. Buy me a beer <a href="http://wordpress.transformnews.com/contact" target="blank">here</a>.	
+		' ,
+            isset( $this->options['myfixed_cssstyle'] ) ? esc_attr( $this->options['myfixed_cssstyle']) : ''
+        );
+    }
 }
 
 if( is_admin() )
@@ -333,51 +315,35 @@ add_filter('the_content_more_link', 'mysticky_remove_more_jump_link');
 function mysticky_build_stylesheet_content() {
 	$mysticky_options = get_option( 'mysticky_option_name' );
     echo
-	'<style type="text/css">';
-	if  ($mysticky_options ['myfixed_disable_admin_bar'] == false ){
-	echo
-	'	#wpadminbar { position: absolute !important; top: 0px !important;}
-	';
+'<style type="text/css">';
+	if ( is_user_logged_in() ) {
+    echo '#wpadminbar { position: absolute !important; top: 0px !important;}';
 	}
 	echo
-	'.myfixed {
-		position: fixed!important;
-		top: 0px!important;
-		left: 0px!important;
-		margin-top: 0px!important;
-		z-index: '. $mysticky_options ['myfixed_zindex'] .'; 
-		-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=' . $mysticky_options ['myfixed_opacity'] . ')";
-		filter: alpha(opacity=' . $mysticky_options ['myfixed_opacity'] . ');
-		opacity:.' . $mysticky_options ['myfixed_opacity'] . ';
-	';
-	if  ($mysticky_options ['myfixed_width'] >= 1 ){
-    echo
-		'	width:' . $mysticky_options ['myfixed_width'] . '!important;
-			
-	';
-	}
-	echo
-		'	background-color: ' . $mysticky_options ['myfixed_bgcolor'] . '!important;
-		-webkit-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's;
-		-moz-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's;
-		-o-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's;
-		transition: ' . $mysticky_options ['myfixed_transition_time'] . 's;
-		}
-	';
-	if  ($mysticky_options ['myfixed_disable_small_screen'] == false ){
-	echo
-	'@media (max-width: 359px) {.myfixed {position: static!important;}}
-	';
-	}
-	echo
-	'#mysticky_wrap { width:100%; }
-	';
+	  $mysticky_options ['myfixed_cssstyle'] ;
 	
+	echo
+	'
+	#mysticky-nav { width:100%!important;  position: static;';
 	if  ($mysticky_options ['myfixed_fade'] == false ){
 	echo
-	''. $mysticky_options ['mysticky_class_selector'] . '{ top: -100px; width:100%; position: static; max-width: 100% !important; }';
+	'top: -100px;';
 	}
-	echo '</style>
+	echo
+	'}';
+	echo
+	'.wrapfixed { position: fixed!important; top: 0px !important; left: 0px !important; margin-top: 0px !important;  z-index: '. $mysticky_options ['myfixed_zindex'] .'; -webkit-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -moz-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -o-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; transition: ' . $mysticky_options ['myfixed_transition_time'] . 's;   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=' . $mysticky_options ['myfixed_opacity'] . ')"; filter: alpha(opacity=' . $mysticky_options ['myfixed_opacity'] . '); opacity:.' . $mysticky_options ['myfixed_opacity'] . '; background-color: ' . $mysticky_options ['myfixed_bgcolor'] . '!important;  }
+	';
+	
+	
+	
+	if  ($mysticky_options ['myfixed_disable_small_screen'] > 0 ){
+    echo
+		'@media (max-width: ' . $mysticky_options ['myfixed_disable_small_screen'] . 'px) {.wrapfixed {position: static!important;}}
+	';
+	}
+	echo 
+'</style>
 	';
 }
 add_action('wp_head', 'mysticky_build_stylesheet_content');
