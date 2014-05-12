@@ -286,7 +286,7 @@ class MyStickyMenuPage
     {
         printf(
             '
-			Edit .myfixed css class to change your menu style while sticky. <br /> <textarea type="text" rows="4" cols="60" id="myfixed_cssstyle" name="mysticky_option_name[myfixed_cssstyle]">%s</textarea> <br />Defaults are fail safe settings and works in most themes although not all settings are required and some may be removed.<br />For example if you want to change default menu hover color while sticky add: .myfixed li a:hover {color:#000;background-color: #ccc ;} .<br /><br />If textbox is empty after update add this default code: .myfixed {margin: 0 auto!important;float:none!important; border:0px!important; background:none!important; }" .<br />More examples <a href="http://wordpress.transformnews.com/tutorials/mystickymenu-extended-style-functionality-using-myfixed-sticky-class-403" target="blank">here</a>. 
+			Edit .myfixed css class to change your menu style while sticky. <br /> <textarea type="text" rows="4" cols="60" id="myfixed_cssstyle" name="mysticky_option_name[myfixed_cssstyle]">%s</textarea> <br />Defaults are fail safe settings and works in most themes although not all settings are required and some may be removed.<br />For example if you want to change default menu hover color while sticky add: .myfixed li a:hover {color:#000;background-color: #ccc ;} .<br /><br />Default: .myfixed {margin: 0 auto!important;float:none!important; border:0px!important; background:none!important; }" .<br />More examples <a href="http://wordpress.transformnews.com/tutorials/mystickymenu-extended-style-functionality-using-myfixed-sticky-class-403" target="blank">here</a>. 
 		' ,
             isset( $this->options['myfixed_cssstyle'] ) ? esc_attr( $this->options['myfixed_cssstyle']) : ''
         );
