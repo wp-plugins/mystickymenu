@@ -25,3 +25,6 @@ Original javascript used from http://jsbin.com/omanut/2/edit
 == Screenshots ==
 1.  screenshot-1.png shows administration settings.
 2.  screenshot-2.png shows menu when page is scrolled towards the bottom.
+
+== Upgrade Notice ==
+After upgrade please check 

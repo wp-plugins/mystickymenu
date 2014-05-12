@@ -207,8 +207,11 @@ class MyStickyMenuPage
 
 			update_option( 'mysticky_option_name', $default );		
 		}
+		
+		
+		
 	}
-
+	
 
     /** 
      * Print the Section text
@@ -314,14 +317,19 @@ add_filter('the_content_more_link', 'mysticky_remove_more_jump_link');
 
 function mysticky_build_stylesheet_content() {
 	$mysticky_options = get_option( 'mysticky_option_name' );
+	
     echo
 '<style type="text/css">';
 	if ( is_user_logged_in() ) {
     echo '#wpadminbar { position: absolute !important; top: 0px !important;}';
 	}
+	
+	echo
+	'.myfixed {margin: 0 auto; background:none;}';
+	
 	echo
 	  $mysticky_options ['myfixed_cssstyle'] ;
-	
+	  
 	echo
 	'
 	#mysticky-nav { width:100%!important;  position: static;';
