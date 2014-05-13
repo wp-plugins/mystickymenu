@@ -126,13 +126,7 @@ class MyStickyMenuPage
             'my-stickymenu-settings', 
             'setting_section_id'
         );
-		add_settings_field(
-            'myfixed_fade', 
-            'Fade or slide effect', 
-            array( $this, 'myfixed_fade_callback' ), 
-            'my-stickymenu-settings', 
-            'setting_section_id'
-        );	
+		
 		add_settings_field(
             'myfixed_disable_small_screen', 
             'Disable at Small Screen Sizes', 
@@ -146,7 +140,15 @@ class MyStickyMenuPage
             array( $this, 'myfixed_cssstyle_callback' ), 
             'my-stickymenu-settings', 
             'setting_section_id'
+			 
         );
+		add_settings_field(
+            'myfixed_fade', 
+            'Fade or slide effect', 
+            array( $this, 'myfixed_fade_callback' ), 
+            'my-stickymenu-settings', 
+            'setting_section_id'
+        );	
     }
 	
     /**
@@ -172,15 +174,17 @@ class MyStickyMenuPage
 		if( isset( $input['myfixed_transition_time'] ) )
             $new_input['myfixed_transition_time'] = sanitize_text_field( $input['myfixed_transition_time'] );
 			
-		if( isset( $input['myfixed_fade'] ) )
-            $new_input['myfixed_fade'] = sanitize_text_field( $input['myfixed_fade'] );
-			
 		if( isset( $input['myfixed_disable_small_screen'] ) )
             $new_input['myfixed_disable_small_screen'] = sanitize_text_field( $input['myfixed_disable_small_screen'] );
 		
 		if( isset( $input['myfixed_cssstyle'] ) )
             //$new_input['myfixed_cssstyle'] = esc_textarea( $input['myfixed_cssstyle'] );
              $new_input['myfixed_cssstyle'] = sanitize_text_field( $input['myfixed_cssstyle'] );
+		
+		if( isset( $input['myfixed_fade'] ) )
+            $new_input['myfixed_fade'] = sanitize_text_field( $input['myfixed_fade'] ); 
+			 
+			 
         return $new_input;
     }
 	
@@ -190,6 +194,9 @@ class MyStickyMenuPage
 	public function mysticky_default_options() {
 		
 		global $options;
+	
+		
+		
 
 		if ( get_option('mysticky_option_name') == false ) {	
 		
@@ -200,30 +207,26 @@ class MyStickyMenuPage
 				'myfixed_bgcolor' => '#F39A30',
 				'myfixed_opacity' => '95',
 				'myfixed_transition_time' => '0.3',
-				'myfixed_cssstyle' => '.myfixed {margin: 0 auto!important; float:none!important; border:0px!important; background:none!important; max-width: 100%!important;}',
-				'myfixed_fade' => 'on',
-				'myfixed_disable_small_screen' => '359'
+				'myfixed_cssstyle' => '.myfixed {margin: 0 auto!important; float:none!important; border:0px!important; background:none!important;}',
+				'myfixed_disable_small_screen' => '359',
+				'myfixed_fade' => 'on'
 			);
-
+				
 			update_option( 'mysticky_option_name', $default );		
 		}
-		
-		
-		
 	}
-	
-
     /** 
      * Print the Section text
      */
+	 
     public function print_section_info()
     {
         print 'Add nice modern sticky menu or header to any theme. Defaults works for Twenty Thirteen theme. <br />For other themes change "Sticky Class" to div class desired to be sticky (div id can be used too).';
     }
-
     /** 
      * Get the settings option array and print one of its values
      */
+	 
     public function mysticky_class_selector_callback()
     {
         printf(
@@ -231,7 +234,7 @@ class MyStickyMenuPage
             isset( $this->options['mysticky_class_selector'] ) ? esc_attr( $this->options['mysticky_class_selector']) : '' 
         );
     }
-    
+	
     public function myfixed_zindex_callback()
     {
         printf(
@@ -264,15 +267,6 @@ class MyStickyMenuPage
         );
     }
 	
-	public function myfixed_fade_callback()
-	{
-		printf(
-			'<input id="%1$s" name="mysticky_option_name[myfixed_fade]" type="checkbox" %2$s /> Checked is fade, unchecked is slide.',
-			'myfixed_fade',
-			checked( isset( $this->options['myfixed_fade'] ), true, false )
-		);
-	} 
-	
 	public function myfixed_disable_small_screen_callback()
 	{
 		printf(
@@ -286,11 +280,21 @@ class MyStickyMenuPage
     {
         printf(
             '
-			Edit .myfixed css class to change your menu style while sticky. <br /> <textarea type="text" rows="4" cols="60" id="myfixed_cssstyle" name="mysticky_option_name[myfixed_cssstyle]">%s</textarea> <br />Defaults are fail safe settings and works in most themes although not all settings are required and some may be removed.<br />For example if you want to change default menu hover color while sticky add: .myfixed li a:hover {color:#000;background-color: #ccc ;} .<br /><br />Default: .myfixed {margin: 0 auto!important;float:none!important; border:0px!important; background:none!important; }" .<br />More examples <a href="http://wordpress.transformnews.com/tutorials/mystickymenu-extended-style-functionality-using-myfixed-sticky-class-403" target="blank">here</a>. 
+			<label for="myfixed_cssstyle">Add/Edit .myfixed css class to change sticky menu style.Leave it blank for default style.<br /></label>  <textarea type="text" rows="4" cols="60" id="myfixed_cssstyle" name="mysticky_option_name[myfixed_cssstyle]">%s</textarea> <br />Default style: .myfixed {margin: 0 auto!important;float:none!important; border:0px!important; background:none!important; }<br /><br />If you want to change default menu hover color while sticky add: .myfixed li a:hover {color:#000;background-color: #ccc ;} .<br /> More examples <a href="http://wordpress.transformnews.com/tutorials/mystickymenu-extended-style-functionality-using-myfixed-sticky-class-403" target="blank">here</a>.
 		' ,
             isset( $this->options['myfixed_cssstyle'] ) ? esc_attr( $this->options['myfixed_cssstyle']) : ''
         );
     }
+	
+	public function myfixed_fade_callback()
+	{
+		printf(
+			'<input id="%1$s" name="mysticky_option_name[myfixed_fade]" type="checkbox" %2$s /> <label>Checked is fade, unchecked is slide.</label>',
+			'myfixed_fade',
+			checked( isset( $this->options['myfixed_fade'] ), true, false )
+		);
+	} 
+	
 }
 
 if( is_admin() )
@@ -316,6 +320,7 @@ add_filter('the_content_more_link', 'mysticky_remove_more_jump_link');
 // Create style from options
 
 function mysticky_build_stylesheet_content() {
+	
 	$mysticky_options = get_option( 'mysticky_option_name' );
 	
     echo
@@ -324,8 +329,11 @@ function mysticky_build_stylesheet_content() {
     echo '#wpadminbar { position: absolute !important; top: 0px !important;}';
 	}
 	
-	echo
-	'.myfixed {margin: 0 auto; background:none;}';
+	if (  $mysticky_options['myfixed_cssstyle'] == "" )  {
+	
+	 echo '.myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; }';
+	
+	}
 	
 	echo
 	  $mysticky_options ['myfixed_cssstyle'] ;
