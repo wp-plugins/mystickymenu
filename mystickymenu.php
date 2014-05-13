@@ -230,7 +230,7 @@ class MyStickyMenuPage
     public function mysticky_class_selector_callback()
     {
         printf(
-            '<input type="text" id="mysticky_class_selector" name="mysticky_option_name[mysticky_class_selector]" value="%s" /> .navbar for Twenty Thirteen theme, for other themes change to menu or header div class or id.',
+            '<p class="description"><input type="text" id="mysticky_class_selector" name="mysticky_option_name[mysticky_class_selector]" value="%s" /> menu or header div class or id.</p>',
             isset( $this->options['mysticky_class_selector'] ) ? esc_attr( $this->options['mysticky_class_selector']) : '' 
         );
     }
@@ -238,7 +238,7 @@ class MyStickyMenuPage
     public function myfixed_zindex_callback()
     {
         printf(
-            '<input type="text" id="myfixed_zindex" name="mysticky_option_name[myfixed_zindex]" value="%s" /> sticky z-index.',
+            '<p class="description"><input type="text" id="myfixed_zindex" name="mysticky_option_name[myfixed_zindex]" value="%s" /> sticky z-index.</p>',
             isset( $this->options['myfixed_zindex'] ) ? esc_attr( $this->options['myfixed_zindex']) : ''
         );
     }
@@ -246,7 +246,7 @@ class MyStickyMenuPage
 	public function myfixed_bgcolor_callback()
     {
         printf(
-            '<input type="text" id="myfixed_bgcolor" name="mysticky_option_name[myfixed_bgcolor]" value="%s" /> full width background color.' ,
+            '<p class="description"><input type="text" id="myfixed_bgcolor" name="mysticky_option_name[myfixed_bgcolor]" value="%s" /> full width background color.</p>' ,
             isset( $this->options['myfixed_bgcolor'] ) ? esc_attr( $this->options['myfixed_bgcolor']) : ''
         );
     }
@@ -254,7 +254,7 @@ class MyStickyMenuPage
 	public function myfixed_opacity_callback()
     {
         printf(
-            '<input type="text" id="myfixed_opacity" name="mysticky_option_name[myfixed_opacity]" value="%s" /> numbers 1-100.',
+            '<p class="description"><input type="text" id="myfixed_opacity" name="mysticky_option_name[myfixed_opacity]" value="%s" /> numbers 1-100.</p>',
             isset( $this->options['myfixed_opacity'] ) ? esc_attr( $this->options['myfixed_opacity']) : ''
         );
     }
@@ -262,7 +262,7 @@ class MyStickyMenuPage
 	public function myfixed_transition_time_callback()
     {
         printf(
-            '<input type="text" id="myfixed_transition_time" name="mysticky_option_name[myfixed_transition_time]" value="%s" /> in seconds.',
+            '<p class="description"><input type="text" id="myfixed_transition_time" name="mysticky_option_name[myfixed_transition_time]" value="%s" /> in seconds.</p>',
             isset( $this->options['myfixed_transition_time'] ) ? esc_attr( $this->options['myfixed_transition_time']) : ''
         );
     }
@@ -270,7 +270,7 @@ class MyStickyMenuPage
 	public function myfixed_disable_small_screen_callback()
 	{
 		printf(
-		'less than <input type="text" size="4" id="myfixed_disable_small_screen" name="mysticky_option_name[myfixed_disable_small_screen]" value="%s" /> px, 0  to disable.',
+		'<p class="description">less than <input type="text" size="4" id="myfixed_disable_small_screen" name="mysticky_option_name[myfixed_disable_small_screen]" value="%s" /> px, 0  to disable.</p>',
             isset( $this->options['myfixed_disable_small_screen'] ) ? esc_attr( $this->options['myfixed_disable_small_screen']) : ''
 		);
 	}
@@ -280,7 +280,7 @@ class MyStickyMenuPage
     {
         printf(
             '
-			<label for="myfixed_cssstyle">Add/Edit .myfixed css class to change sticky menu style.Leave it blank for default style.<br /></label>  <textarea type="text" rows="4" cols="60" id="myfixed_cssstyle" name="mysticky_option_name[myfixed_cssstyle]">%s</textarea> <br />Default style: .myfixed {margin: 0 auto!important;float:none!important; border:0px!important; background:none!important; }<br /><br />If you want to change default menu hover color while sticky add: .myfixed li a:hover {color:#000;background-color: #ccc ;} .<br /> More examples <a href="http://wordpress.transformnews.com/tutorials/mystickymenu-extended-style-functionality-using-myfixed-sticky-class-403" target="blank">here</a>.
+			<p class="description">Add/Edit .myfixed css class to change sticky menu style.Leave it blank for default style.</p>  <textarea type="text" rows="4" cols="60" id="myfixed_cssstyle" name="mysticky_option_name[myfixed_cssstyle]">%s</textarea> <br /><p class="description">Default style: .myfixed {margin: 0 auto!important;float:none!important; border:0px!important; background:none!important; }<br /><br />If you want to change default menu hover color while sticky add: .myfixed li a:hover {color:#000;background-color: #ccc ;} .<br /> More examples <a href="http://wordpress.transformnews.com/tutorials/mystickymenu-extended-style-functionality-using-myfixed-sticky-class-403" target="blank">here</a>.</p>
 		' ,
             isset( $this->options['myfixed_cssstyle'] ) ? esc_attr( $this->options['myfixed_cssstyle']) : ''
         );
@@ -289,7 +289,7 @@ class MyStickyMenuPage
 	public function myfixed_fade_callback()
 	{
 		printf(
-			'<input id="%1$s" name="mysticky_option_name[myfixed_fade]" type="checkbox" %2$s /> <label>Checked is fade, unchecked is slide.</label>',
+			'<p class="description"><input id="%1$s" name="mysticky_option_name[myfixed_fade]" type="checkbox" %2$s /> Checked is fade, unchecked is slide.</p>',
 			'myfixed_fade',
 			checked( isset( $this->options['myfixed_fade'] ), true, false )
 		);
