@@ -72,6 +72,7 @@ class MyStickyMenuPage
      */
     public function page_init()
     {        
+	    global $id, $title, $callback, $page;
         register_setting(
             'mysticky_option_group', // Option group
             'mysticky_option_name', // Option name
@@ -175,7 +176,7 @@ class MyStickyMenuPage
             $new_input['myfixed_transition_time'] = sanitize_text_field( $input['myfixed_transition_time'] );
 			
 		if( isset( $input['myfixed_disable_small_screen'] ) )
-            $new_input['myfixed_disable_small_screen'] = sanitize_text_field( $input['myfixed_disable_small_screen'] );
+            $new_input['myfixed_disable_small_screen'] = absint( $input['myfixed_disable_small_screen'] );
 		
 		if( isset( $input['myfixed_cssstyle'] ) )
             //$new_input['myfixed_cssstyle'] = esc_textarea( $input['myfixed_cssstyle'] );
@@ -280,7 +281,7 @@ class MyStickyMenuPage
     {
         printf(
             '
-			<p class="description">Add/Edit .myfixed css class to change sticky menu style.Leave it blank for default style.</p>  <textarea type="text" rows="4" cols="60" id="myfixed_cssstyle" name="mysticky_option_name[myfixed_cssstyle]">%s</textarea> <br /><p class="description">Default style: .myfixed {margin: 0 auto!important;float:none!important; border:0px!important; background:none!important; }<br /><br />If you want to change default menu hover color while sticky add: .myfixed li a:hover {color:#000;background-color: #ccc ;} .<br /> More examples <a href="http://wordpress.transformnews.com/tutorials/mystickymenu-extended-style-functionality-using-myfixed-sticky-class-403" target="blank">here</a>.</p>
+			<p class="description">Add/Edit .myfixed css class to change sticky menu style.Leave it blank for default style.</p>  <textarea type="text" rows="4" cols="60" id="myfixed_cssstyle" name="mysticky_option_name[myfixed_cssstyle]">%s</textarea> <br /><p class="description">Default style: .myfixed {margin: 0 auto!important; float:none!important; border:0px!important; background:none!important; }<br /><br />If you want to change sticky hover color first add default style and than: .myfixed li a:hover {color:#000; background-color: #ccc;} .<br /> More examples <a href="http://wordpress.transformnews.com/tutorials/mystickymenu-extended-style-functionality-using-myfixed-sticky-class-403" target="blank">here</a>.</p>
 		' ,
             isset( $this->options['myfixed_cssstyle'] ) ? esc_attr( $this->options['myfixed_cssstyle']) : ''
         );
@@ -341,7 +342,7 @@ function mysticky_build_stylesheet_content() {
 	echo
 	'
 	#mysticky-nav { width:100%!important;  position: static;';
-	if  ($mysticky_options ['myfixed_fade'] == false ){
+	if (!isset($mysticky_options['myfixed_fade'])){
 	echo
 	'top: -100px;';
 	}
