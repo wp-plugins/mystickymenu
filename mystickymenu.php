@@ -218,7 +218,7 @@ class MyStickyMenuPage
 				'myfixed_opacity' => '95',
 				'myfixed_transition_time' => '0.3',
 				'myfixed_disable_small_screen' => '359',
-				'mysticky_active_on_height' => '120',
+				'mysticky_active_on_height' => '320',
 				'myfixed_fade' => false,
 				'myfixed_cssstyle' => '.myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; }'	
 				
