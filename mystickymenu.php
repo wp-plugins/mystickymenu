@@ -305,7 +305,7 @@ class MyStickyMenuPage
 	public function mysticky_active_on_height_callback()
 	{
 		printf(
-		'<p class="description">after <input type="text" size="4" id="mysticky_active_on_height" name="mysticky_option_name[mysticky_active_on_height]" value="%s" />px, relative to div position </p>',
+		'<p class="description">after <input type="text" size="4" id="mysticky_active_on_height" name="mysticky_option_name[mysticky_active_on_height]" value="%s" />px, </p>',
             isset( $this->options['mysticky_active_on_height'] ) ? esc_attr( $this->options['mysticky_active_on_height']) : ''
 		);
 	}
