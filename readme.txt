@@ -12,6 +12,8 @@ This lightweight plugin will made your menu sticky on top of page, after scroll,
 == Description ==
 Plugin is designed for Twentythirteen template but should work on any theme, it's using default twentythirteen ".navbar" css class and that should be modified for other themes if different. 
 
+It's small, simple and does exactly one thing: stick the menu on the top of your page ;) This increases usability and pageviews of your WordPress-Site.
+
 Plugin Home + Demo URL: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269 
 
 == Installation ==
