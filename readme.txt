@@ -1,20 +1,18 @@
 === myStickymenu ===
 Contributors: damiroquai
 Donate link: http://wordpress.transformnews.com
-Tags: sticky menu, twentythirteen, twenty-thirteen, plugin, menu, jquery, sticky header, header, sticky, sticky navigation
-Requires at least: 3.5.1
+Tags: sticky menu, twentythirteen, twenty-thirteen, plugin, menu, jquery
+Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.7
+Stable tag: 1.6
 License: GPLv2 or later
 
-This modern lightweight plugin will made your menu or header sticky on top of page, after desired number of pixels when scrolled.
+This lightweight plugin will made your menu or header sticky on top of page, after desired number of pixels when scrolled.
 
 == Description ==
-Plugin is designed for Twenty Thirteen template but should work on any theme. By default, it uses Twenty Thirteen navigation css class ".navbar" under "Sticky Class" setting field   and that should be modified for other themes (if different) to make it work. Don’t forget this, it’s a mandatory field. 
+Plugin is designed for Twentythirteen template but should work on any theme, it's using default Twenty Thirteen ".navbar" css class and that should be modified for other themes if different. 
 
-Plugin is localized (multi language support) and responsive (as far as your theme is). Also there is possibility to add custom css code which make this plugin very flexible, customizable and user friendly.
-
-Another advancement of this simple plug is that increases usability and page views of your WordPress site since menu is available to the user all the time. 
+It's small, simple and does exactly one thing: stick the menu on the top of your page ;) This increases usability and pageviews of your WordPress-Site 
 
 Plugin Home + Demo URL: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269 
 
@@ -25,7 +23,7 @@ Install like any other plugin. After install activate. If using template other t
 == Frequently Asked Questions ==
 
 = How to find Sticky Class, what should I enter here? =
-So this depends on what you want to make sticky and what theme do you use, but for example if you want your menu to be sticky, than you can examine the code (in firefox right click and “View page source”) and find div in which your menu is situated. This div have some class or id, and that’s the Sticky Class we need. If using class than don’t forget to ad dot (.) in front of class name, or hash (#) in front of id name in Sticky Class field. Twenty Thirteen default working class is ".navbar" without of quotes.
+So this depends on what you want to make sticky and what theme do you use, but for example if you want your menu to be sticky, than you can examine the code (in firefox right click and “View page source”) and find div in which your menu is situated. This div have some class or id, and that’s the Sticky Class we need. If using class than don’t forget to ad dot (.) in front of class name, or hash (#) in front of id name in Sticky Class field. Twenty Thirteen default working class is “.navbar” without of quotes.
 
 
 == Screenshots ==
@@ -37,11 +35,11 @@ So this depends on what you want to make sticky and what theme do you use, but f
 == Changelog ==
 
 = 1.6 =
-* Added: "Make visible when scroled" after number of pixels option.
+* Added: “Make visible when scroled” after number of pixels option.
 * Fixed opacity 100 bug.
 
 = 1.5 =
-* Added option to enter exact width in px when sticky menu should be disabled "Disable at Small Screen Sizes".
+* Added option to enter exact width in px when sticky menu should be disabled “Disable at Small Screen Sizes”.
 * Added “.myfixed css class” setting field – edit .myfixed css style via plugin settings to create custom style.
 * Fixed google adsense clash and undefined index notice.
 * is_user_logged_in instead of old “Remove CSS Rules for Static Admin Bar while Sticky” option
@@ -51,7 +49,7 @@ So this depends on what you want to make sticky and what theme do you use, but f
 * Added new wrapped div around selected sticky class with id mysticky_wrap which should make menu works smoother and extend theme support.
 
 = 1.3 =
-* Added "block direct access" to the mystickymenu plugin file (for security sake).
+* Added “block direct access” to the mystickymenu plugin file (for security sake).
 * Added Enable / Disable at small screen sizes and Remove not necessary css for all themes without admin bar on front page.
 * Added “margin-top :0px” to .myfixed class in head which should extend theme support.
 
@@ -72,19 +70,19 @@ So this depends on what you want to make sticky and what theme do you use, but f
 * Fixed opacity 100 bug.
 
 = 1.5 =
-* Added option to enter exact width in px when sticky menu should be disabled "Disable at Small Screen Sizes".
+* Added option to enter exact width in px when sticky menu should be disabled “Disable at Small Screen Sizes”.
 * Added “.myfixed css class” setting field – edit .myfixed css style via plugin settings to create custom style.
 * Fixed google adsense clash and undefined index notice.
-* is_user_logged_in instead of old "Remove CSS Rules for Static Admin Bar while Sticky" option
+* is_user_logged_in instead of old “Remove CSS Rules for Static Admin Bar while Sticky” option
 
 = 1.4 =
 * Added fade in or slide down effect settings field for sticky class.
 * Added new wrapped div around selected sticky class with id mysticky_wrap.
 
 = 1.3 =
-* Added "block direct access" to the mystickymenu plugin file.
+* Added “block direct access” to the mystickymenu plugin file.
 * Added Enable / Disable at small screen sizes and Remove not necessary css.
-* Added "margin-top :0px" to .myfixed class in head which should extend theme support.
+* Added “margin-top :0px” to .myfixed class in head which should extend theme support.
 
 = 1.2 =
 * Fixed mystickymenu.js for IE browsers, so myStickymenu is now compatible with IE 10, 11
