@@ -7,12 +7,14 @@ Tested up to: 3.9.1
 Stable tag: 1.7
 License: GPLv2 or later
 
-This lightweight plugin will made your menu or header sticky on top of page, after desired number of pixels when scrolled.
+This modern lightweight plugin will made your menu or header sticky on top of page, after desired number of pixels when scrolled.
 
 == Description ==
-Plugin is designed for Twenty Thirteen template but should work on any theme, it's using default Twenty Thirteen ".navbar" css class and that should be modified for other themes if different. 
+Plugin is designed for Twenty Thirteen template but should work on any theme. By default, it uses Twenty Thirteen navigation css class ".navbar" under "Sticky Class" setting field   and that should be modified for other themes (if different) to make it work. Don’t forget this, it’s a mandatory field. 
 
-It's small, simple and does exactly one thing: stick the menu on the top of your page ;) This increases usability and pageviews of your WordPress-Site 
+Plugin is localized (multi language support) and responsive (as far as your theme is). Also there is possibility to add custom css code which make this plugin very flexible, customizable and user friendly.
+
+Another advancement of this simple plug is that increases usability and page views of your WordPress site since menu is available to the user all the time. 
 
 Plugin Home + Demo URL: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269 
 
