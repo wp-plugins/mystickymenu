@@ -30,10 +30,11 @@ wrappernav.appendChild(mysticky_navbar);
 // add myfixed and wrapfixed class to divs while scroll
 var mysticky_active_on_height = parseInt(mysticky_name.mysticky_active_on_height_string) ;
 var origOffsetY = mysticky_active_on_height ;
+var mydivHeight = ((mysticky_navbar.offsetHeight) + 'px');
+
 var hasScrollY = 'scrollY' in window;
 function onScroll(e) {
 var mydivWidth = ((mysticky_navbar.offsetWidth) + 'px');
-var mydivHeight = ((mysticky_navbar.offsetHeight) + 'px');
 var mydivReset = '';
     
 var y = hasScrollY ? window.scrollY : document.documentElement.scrollTop;
