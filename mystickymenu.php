@@ -1,36 +1,52 @@
 <?php     
-   /*
-    Plugin Name: myStickymenu 
-    Plugin URI: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269
-    Description: Simple sticky (fixed on top) menu implementation for default Twentythirteen navigation menu. For other themes, after install go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id.
-    Version: 1.6
-    Author: m.r.d.a
-    License: GPLv2 or later
-    */
+	/*
+	Plugin Name: myStickymenu 
+	Plugin URI: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269
+	Description: Simple sticky (fixed on top) menu implementation for default Twentythirteen navigation menu. For other themes, after install go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id.
+	Version: 1.6
+	Author: m.r.d.a
+	Text domain: mystickymenu
+	Domain Path: /languages
+	License: GPLv2 or later
+	*/
+
 // Block direct acess to the file
 defined('ABSPATH') or die("Cannot access pages directly.");
+
+
+
 
 // Add plugin admin settings by Otto
 class MyStickyMenuPage
 {
-    /**
-     * Holds the values to be used in the fields callbacks
-     */
+/**
+* Holds the values to be used in the fields callbacks
+*/
     private $options;
 
-    /**
-     * Start up
-     */
+/**
+* Start up
+*/
     public function __construct()
     {
         add_action( 'admin_menu', array( $this, 'add_plugin_page' ) );
+		add_action( 'admin_init', array( $this, 'mysticky_load_transl') );
         add_action( 'admin_init', array( $this, 'page_init' ) );
 		add_action( 'admin_init', array( $this, 'mysticky_default_options' ) );
-    }
+		add_action( 'admin_enqueue_scripts',  array( $this, 'mysticky_enqueue_color_picker' ) );
 
-    /**
-     * Add options page
-     */
+		
+    }
+	
+		
+	public function mysticky_load_transl()
+    {
+        load_plugin_textdomain('mystickymenu', FALSE, dirname(plugin_basename(__FILE__)).'/languages/');
+    }
+	
+/**
+* Add options page
+*/
     public function add_plugin_page()
     {
         // This page will be under "Settings"
@@ -44,9 +60,9 @@ class MyStickyMenuPage
         );
     }
 
-    /**
-     * Options page callback
-     */
+/**
+* Options page callback
+*/
     public function create_admin_page()
     {
         // Set class property
@@ -54,7 +70,7 @@ class MyStickyMenuPage
         ?>
         <div class="wrap">
             <?php screen_icon(); ?>
-            <h2>myStickymenu Settings</h2>           
+            <h2><?php _e('myStickymenu Settings', 'mystickymenu'); ?></h2>       
             <form method="post" action="options.php">
             <?php
                 // This prints out all hidden setting fields
@@ -67,9 +83,9 @@ class MyStickyMenuPage
         <?php
     }
 	
-    /**
-     * Register and add settings
-     */
+/**
+* Register and add settings
+*/
     public function page_init()
     {   
 		global $id, $title, $callback, $page;     
@@ -83,14 +99,14 @@ class MyStickyMenuPage
 
         add_settings_section(
             'setting_section_id', // ID
-            'myStickymenu Options', // Title
+			 __("myStickymenu Options", 'mystickymenu'), // Title
             array( $this, 'print_section_info' ), // Callback
             'my-stickymenu-settings' // Page
         );
 
         add_settings_field(
             'mysticky_class_selector', // ID
-            'Sticky Class', // Title 
+			__("Sticky Class", 'mystickymenu'), // Title 
             array( $this, 'mysticky_class_selector_callback' ), // Callback
             'my-stickymenu-settings', // Page
             'setting_section_id' // Section         
@@ -98,7 +114,7 @@ class MyStickyMenuPage
 
         add_settings_field(
             'myfixed_zindex', 
-            'Sticky z-index', 
+			__("Sticky z-index", 'mystickymenu'),
             array( $this, 'myfixed_zindex_callback' ), 
             'my-stickymenu-settings', 
             'setting_section_id'
@@ -106,7 +122,7 @@ class MyStickyMenuPage
 		
 		add_settings_field(
             'myfixed_bgcolor', 
-            'Sticky Background Color', 
+			__("Sticky Background Color", 'mystickymenu'),
             array( $this, 'myfixed_bgcolor_callback' ), 
             'my-stickymenu-settings', 
             'setting_section_id'
@@ -114,7 +130,7 @@ class MyStickyMenuPage
 		
 		add_settings_field(
             'myfixed_opacity', 
-            'Sticky Opacity', 
+			__("Sticky Opacity", 'mystickymenu'),
             array( $this, 'myfixed_opacity_callback' ), 
             'my-stickymenu-settings', 
             'setting_section_id'
@@ -122,7 +138,7 @@ class MyStickyMenuPage
 		
 		add_settings_field(
             'myfixed_transition_time', 
-            'Sticky Transition Time', 
+			__("Sticky Transition Time", 'mystickymenu'),
             array( $this, 'myfixed_transition_time_callback' ), 
             'my-stickymenu-settings', 
             'setting_section_id'
@@ -130,7 +146,7 @@ class MyStickyMenuPage
 		
 		add_settings_field(
             'myfixed_disable_small_screen', 
-            'Disable at Small Screen Sizes', 
+			__("Disable at Small Screen Sizes", 'mystickymenu'),
             array( $this, 'myfixed_disable_small_screen_callback' ), 
             'my-stickymenu-settings', 
             'setting_section_id'
@@ -138,7 +154,7 @@ class MyStickyMenuPage
 		
 		add_settings_field(
             'mysticky_active_on_height', 
-            'Make visible when scroled', 
+			__("Make visible when scroled", 'mystickymenu'),
             array( $this, 'mysticky_active_on_height_callback' ), 
             'my-stickymenu-settings', 
             'setting_section_id'
@@ -146,7 +162,7 @@ class MyStickyMenuPage
 		
 		add_settings_field(
             'myfixed_fade', 
-            'Fade or slide effect', 
+			__("Fade or slide effect", 'mystickymenu'),
             array( $this, 'myfixed_fade_callback' ), 
             'my-stickymenu-settings', 
             'setting_section_id'
@@ -154,7 +170,7 @@ class MyStickyMenuPage
 		
 		add_settings_field(
             'myfixed_cssstyle', 
-            '.myfixed css class', 
+			__(".myfixed css class", 'mystickymenu'),
             array( $this, 'myfixed_cssstyle_callback' ), 
             'my-stickymenu-settings', 
             'setting_section_id'
@@ -162,11 +178,11 @@ class MyStickyMenuPage
         );
     }
 	
-    /**
-     * Sanitize each setting field as needed
-     *
-     * @param array $input Contains all settings fields as array keys
-     */
+/**
+* Sanitize each setting field as needed
+*
+* @param array $input Contains all settings fields as array keys
+*/
     public function sanitize( $input )
     {
         $new_input = array();
@@ -202,9 +218,9 @@ class MyStickyMenuPage
         return $new_input;
     }
 	
-	 /**
-     * Load Defaults
-     */ 	
+/**
+* Load Defaults
+*/ 	
 	public function mysticky_default_options() {
 		
 		global $options;
@@ -241,95 +257,126 @@ class MyStickyMenuPage
   }		
 		*/	
 }
+	public  function mysticky_enqueue_color_picker(  ) 
+	{
+		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_script( 'my-script-handle', plugins_url('js/iris-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
+	}
 	
-    /** 
-     * Print the Section text
-     */
-	 
-    public function print_section_info()
-    {
-        print 'Add nice modern sticky menu or header to any theme. Defaults works for Twenty Thirteen theme. <br />For other themes change "Sticky Class" to div class desired to be sticky (div id can be used too).';
-    }
-    /** 
-     * Get the settings option array and print one of its values
-     */
-	 
-    public function mysticky_class_selector_callback()
-    {
-        printf(
-            '<p class="description"><input type="text" size="8" id="mysticky_class_selector" name="mysticky_option_name[mysticky_class_selector]" value="%s" /> menu or header div class or id.</p>',
-            isset( $this->options['mysticky_class_selector'] ) ? esc_attr( $this->options['mysticky_class_selector']) : '' 
-        );
+/** 
+* Print the Section text
+*/
+	public function print_section_info()
+	{
+		echo __("Add nice modern sticky menu or header to any theme. Defaults works for Twenty Thirteen theme. <br />For other themes change 'Sticky Class' to div class desired to be sticky (div id can be used too).", 'mystickymenu');
     }
 	
-    public function myfixed_zindex_callback()
-    {
-        printf(
-            '<p class="description"><input type="text" size="8" id="myfixed_zindex" name="mysticky_option_name[myfixed_zindex]" value="%s" /> sticky z-index.</p>',
-            isset( $this->options['myfixed_zindex'] ) ? esc_attr( $this->options['myfixed_zindex']) : ''
-        );
-    }
+/** 
+* Get the settings option array and print one of its values
+*/
+	public function mysticky_class_selector_callback()
+	{
+		printf(
+			'<p class="description"><input type="text" size="8" id="mysticky_class_selector" name="mysticky_option_name[mysticky_class_selector]" value="%s" /> ',  
+			isset( $this->options['mysticky_class_selector'] ) ? esc_attr( $this->options['mysticky_class_selector']) : '' 
+		);
+		 echo __("menu or header div class or id.", 'mystickymenu');
+		 echo '</p>';
+	}
 	
+	public function myfixed_zindex_callback()
+	{
+		printf(
+			'<p class="description"><input type="text" size="8" id="myfixed_zindex" name="mysticky_option_name[myfixed_zindex]" value="%s" /></p>',
+			isset( $this->options['myfixed_zindex'] ) ? esc_attr( $this->options['myfixed_zindex']) : ''
+		);
+	}
+
 	public function myfixed_bgcolor_callback()
-    {
-        printf(
-            '<p class="description"><input type="text" size="8" id="myfixed_bgcolor" name="mysticky_option_name[myfixed_bgcolor]" value="%s" /> full width background color.</p>' ,
-            isset( $this->options['myfixed_bgcolor'] ) ? esc_attr( $this->options['myfixed_bgcolor']) : ''
+	{
+		printf(
+			'<p class="description"><input type="text" size="8" id="myfixed_bgcolor" name="mysticky_option_name[myfixed_bgcolor]" class="my-color-field" value="%s" /></p> ' ,
+			isset( $this->options['myfixed_bgcolor'] ) ? esc_attr( $this->options['myfixed_bgcolor']) : ''
         );
     }
 	
 	public function myfixed_opacity_callback()
-    {
-        printf(
-            '<p class="description"><input type="text" size="4" id="myfixed_opacity" name="mysticky_option_name[myfixed_opacity]" value="%s" /> numbers 1-100.</p>',
-            isset( $this->options['myfixed_opacity'] ) ? esc_attr( $this->options['myfixed_opacity']) : ''
-        );
-    }
+	{
+		printf(
+			'<p class="description"><input type="text" size="4" id="myfixed_opacity" name="mysticky_option_name[myfixed_opacity]"  value="%s" /> ',
+			isset( $this->options['myfixed_opacity'] ) ? esc_attr( $this->options['myfixed_opacity']) : ''
+		);
+		echo __("numbers 1-100.", 'mystickymenu');
+		echo '</p>';
+	}
 	
 	public function myfixed_transition_time_callback()
     {
         printf(
-            '<p class="description"><input type="text" size="4" id="myfixed_transition_time" name="mysticky_option_name[myfixed_transition_time]" value="%s" /> in seconds.</p>',
+            '<p class="description"><input type="text" size="4" id="myfixed_transition_time" name="mysticky_option_name[myfixed_transition_time]" value="%s" /> ',
             isset( $this->options['myfixed_transition_time'] ) ? esc_attr( $this->options['myfixed_transition_time']) : ''
         );
+		echo __("in seconds.", 'mystickymenu');
+		echo '</p>';
     }
 	
 	public function myfixed_disable_small_screen_callback()
 	{
 		printf(
-		'<p class="description">less than <input type="text" size="4" id="myfixed_disable_small_screen" name="mysticky_option_name[myfixed_disable_small_screen]" value="%s" />px width, 0  to disable.</p>',
+		'<p class="description">'
+		);
+		echo __("less than", 'mystickymenu');
+		printf(
+		' <input type="text" size="4" id="myfixed_disable_small_screen" name="mysticky_option_name[myfixed_disable_small_screen]" value="%s" />',
             isset( $this->options['myfixed_disable_small_screen'] ) ? esc_attr( $this->options['myfixed_disable_small_screen']) : ''
 		);
+		echo __("px width, 0  to disable.", 'mystickymenu');
+		echo '</p>';
 	}
 	
 	public function mysticky_active_on_height_callback()
 	{
 		printf(
-		'<p class="description">after <input type="text" size="4" id="mysticky_active_on_height" name="mysticky_option_name[mysticky_active_on_height]" value="%s" />px, </p>',
+		'<p class="description">'
+		);
+		echo __("after", 'mystickymenu');
+		printf(
+		' <input type="text" size="4" id="mysticky_active_on_height" name="mysticky_option_name[mysticky_active_on_height]" value="%s" />',
             isset( $this->options['mysticky_active_on_height'] ) ? esc_attr( $this->options['mysticky_active_on_height']) : ''
 		);
+		echo __("px. (scroll)", 'mystickymenu');
+		echo '</p>';
 	}
 	
 	public function myfixed_fade_callback()
 	{
 		printf(
-			'<p class="description"><input id="%1$s" name="mysticky_option_name[myfixed_fade]" type="checkbox" %2$s /> Checked is slide, unchecked is fade.</p>',
+			'<p class="description"><input id="%1$s" name="mysticky_option_name[myfixed_fade]" type="checkbox" %2$s /> ',
 			'myfixed_fade',
 			checked( isset( $this->options['myfixed_fade'] ), true, false ) 
 		);
-		
+		echo __("Checked is slide, unchecked is fade.", 'mystickymenu');
+		echo '</p>';	
 	} 
 	
    public function myfixed_cssstyle_callback()
-   
-    {
-        printf(
-            '
-			<p class="description">Add/Edit .myfixed css class to change sticky menu style. Leave it blank for default style.</p>  <textarea type="text" rows="4" cols="60" id="myfixed_cssstyle" name="mysticky_option_name[myfixed_cssstyle]">%s</textarea> <br />
-		' ,
-            isset( $this->options['myfixed_cssstyle'] ) ? esc_attr( $this->options['myfixed_cssstyle']) : ''
-        );
-		echo '<p class="description">Default style: .myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; }<br /><br />If you want to change sticky hover color first add default style and than: .myfixed li a:hover {color:#000; background-color: #ccc;} .<br /> More examples <a href="http://wordpress.transformnews.com/tutorials/mystickymenu-extended-style-functionality-using-myfixed-sticky-class-403" target="blank">here</a>.</p>';
+	{
+		printf(
+		'<p class="description">'
+		);
+		echo __("Add/Edit .myfixed css class to change sticky menu style. Leave it blank for default style.", 'mystickymenu');
+		echo '</p>';
+		printf(
+			'<textarea type="text" rows="4" cols="60" id="myfixed_cssstyle" name="mysticky_option_name[myfixed_cssstyle]">%s</textarea> <br />',
+			isset( $this->options['myfixed_cssstyle'] ) ? esc_attr( $this->options['myfixed_cssstyle']) : ''
+		);
+		echo '<p class="description">';
+		echo __("Default style: ", 'mystickymenu'); 
+		echo '.myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; }<br /><br />';
+		echo __("If you want to change sticky hover color first add default style and than: ", 'mystickymenu'); 
+		echo '.myfixed li a:hover {color:#000; background-color: #ccc;}<br />'; 
+		echo __("More examples <a href='http://wordpress.transformnews.com/tutorials/mystickymenu-extended-style-functionality-using-myfixed-sticky-class-403'>here</a>.", 'mystickymenu'); 
+		echo'</p>';
     }
 	
 }
@@ -337,29 +384,25 @@ class MyStickyMenuPage
 	if( is_admin() )
     $my_settings_page = new MyStickyMenuPage();
 
-	// end plugin admin settings
+// end plugin admin settings
 
-	// Remove default option for more link that jumps at the midle of page and its covered by menu
+// Remove default option for more link that jumps at the midle of page and its covered by menu
 
 	function mysticky_remove_more_jump_link($link) 
 	{ 
-	
 		$offset = strpos($link, '#more-');
-	
 		if ($offset) {
 			$end = strpos($link, '"',$offset);
 		}
-	
 		if ($end) {
 			$link = substr_replace($link, '', $offset, $end-$offset);
 		}
-	
 		return $link;
 	}
 	
 	add_filter('the_content_more_link', 'mysticky_remove_more_jump_link');
 
-	// Create style from options
+// Create style from options
 
 	function mysticky_build_stylesheet_content() {
 	
@@ -368,18 +411,19 @@ class MyStickyMenuPage
     echo
 '<style type="text/css">';
 	if ( is_user_logged_in() ) {
+		
     echo '#wpadminbar { position: absolute !important; top: 0px !important;}';
 	}
+	
 	if (  $mysticky_options['myfixed_cssstyle'] == "" )  {
 	echo '.myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; }';
 	}
 	echo
-	  $mysticky_options ['myfixed_cssstyle'] ;
-	
+		$mysticky_options ['myfixed_cssstyle'] ; 
 	echo
 	'
 	#mysticky-nav { width:100%!important;  position: static;';
-	    
+    
 	if (isset($mysticky_options['myfixed_fade'])){
 	
 	echo
@@ -389,21 +433,21 @@ class MyStickyMenuPage
 	'}';
 	
 	if  ($mysticky_options ['myfixed_opacity'] == 100 ){
-   
-	
+
 	echo
 	'.wrapfixed { position: fixed!important; top:0px!important; left: 0px!important; margin-top:0px!important;  z-index: '. $mysticky_options ['myfixed_zindex'] .'; -webkit-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -moz-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -o-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; transition: ' . $mysticky_options ['myfixed_transition_time'] . 's;  background-color: ' . $mysticky_options ['myfixed_bgcolor'] . '!important;  }
 	';
 	}
+	
 	if  ($mysticky_options ['myfixed_opacity'] < 100 ){
    
-	
 	echo
 	'.wrapfixed { position: fixed!important; top:0px!important; left: 0px!important; margin-top:0px!important;  z-index: '. $mysticky_options ['myfixed_zindex'] .'; -webkit-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -moz-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -o-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; transition: ' . $mysticky_options ['myfixed_transition_time'] . 's;   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=' . $mysticky_options ['myfixed_opacity'] . ')"; filter: alpha(opacity=' . $mysticky_options ['myfixed_opacity'] . '); opacity:.' . $mysticky_options ['myfixed_opacity'] . '; background-color: ' . $mysticky_options ['myfixed_bgcolor'] . '!important;  }
 	';
 	}
 	
 	if  ($mysticky_options ['myfixed_disable_small_screen'] > 0 ){
+		
     echo
 		'@media (max-width: ' . $mysticky_options ['myfixed_disable_small_screen'] . 'px) {.wrapfixed {position: static!important; display: none!important;}}
 	';
@@ -421,7 +465,7 @@ class MyStickyMenuPage
 		$mysticky_options = get_option( 'mysticky_option_name' );
 		
 		// Register scripts
-			wp_register_script('mystickymenu', WP_PLUGIN_URL. '/mystickymenu/mystickymenu.js', false,'1.0.0', true);
+			wp_register_script('mystickymenu', WP_PLUGIN_URL. '/mystickymenu/js/mystickymenu.js', false,'1.0.0', true);
 			wp_enqueue_script( 'mystickymenu' );
 
 		// Localize mystickymenu.js script with myStickymenu options
