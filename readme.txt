@@ -2,7 +2,7 @@
 Contributors: damiroquai
 Donate link: http://wordpress.transformnews.com
 Tags: sticky menu, twentythirteen, twenty-thirteen, plugin, menu, jquery
-Requires at least: 3.8
+Requires at least: 3.5.1
 Tested up to: 3.9.1
 Stable tag: 1.6
 License: GPLv2 or later
@@ -10,11 +10,11 @@ License: GPLv2 or later
 This lightweight plugin will made your menu or header sticky on top of page, after desired number of pixels when scrolled.
 
 == Description ==
-Plugin is designed for Twenty Thirteen template but should work on any theme. By default, it uses Twenty Thirteen navigation css class ".navbar" under "Sticky Class" setting field   and that should be modified for other themes (if different) to make it work. Don’t forget this, it’s a mandatory field. 
+Plugin is designed for Twenty Thirteen template but should work on any theme. By default, it uses Twenty Thirteen navigation css class ".navbar" under "Sticky Class" setting field   and that should be modified for other themes (if different) to make it work. Do not forget this, it is a mandatory field. 
 
 Plugin is responsive as far as your theme is. Also there is possibility to add custom css code which make this plugin very flexible, customizable and user friendly.
 
-Another advancement of this simple plugin is that increases usability and page views of your WordPress site since menu is available to the user all the time.  
+Another advancement of this simple plugin is that increases usability and page views of your WordPress site since menu is available to the user all the time.
 
 Plugin Home + Demo URL: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269 
 
