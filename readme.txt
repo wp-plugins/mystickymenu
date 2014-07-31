@@ -10,7 +10,7 @@ License: GPLv2 or later
 This lightweight plugin will made your menu or header sticky on top of page, after desired number of pixels when scrolled.
 
 == Description ==
-Plugin is designed for Twenty Thirteen template but should work on any theme. By default, it uses Twenty Thirteen navigation css class ".navbar" under "Sticky Class" setting field   and that should be modified for other themes (if different) to make it work. Don’t forget this, it’s a mandatory fieldß. 
+Plugin is designed for Twenty Thirteen template but should work on any theme. By default, it uses Twenty Thirteen navigation css class ".navbar" under "Sticky Class" setting field   and that should be modified for other themes (if different) to make it work. Don’t forget this, it’s a mandatory field. 
 
 Plugin is responsive as far as your theme is. Also there is possibility to add custom css code which make this plugin very flexible, customizable and user friendly.
 
