@@ -3,7 +3,7 @@ Contributors: damiroquai
 Donate link: http://wordpress.transformnews.com
 Tags: sticky menu, twentythirteen, twenty-thirteen, plugin, menu, jquery, sticky header, header, sticky, sticky navigation
 Requires at least: 3.5.1
-Tested up to: 3.9.1
+Tested up to: 3.9.2
 Stable tag: 1.7
 License: GPLv2 or later
 
@@ -38,6 +38,7 @@ So this depends on what you want to make sticky and what theme do you use, but f
 
 = 1.7 =
 * Added multi language support (localization).
+* Added languages - English (default), Spanish, Serbian and Croatian.
 * Added Iris color picker script.
 * Fixed jumping of page on scroll while menu is activated (height is defined before scroll event).
 * mystickymenu.js moved to js folder
