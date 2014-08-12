@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: myStickymenu\n"
-"POT-Creation-Date: 2014-08-11 14:43+0100\n"
-"PO-Revision-Date: 2014-08-11 14:43+0100\n"
+"POT-Creation-Date: 2014-08-12 18:05+0100\n"
+"PO-Revision-Date: 2014-08-12 18:05+0100\n"
 "Last-Translator: Damir Babojelic <jahmirda@gmail.com>\n"
 "Language-Team: TFN <jahmirda@gmail.com>\n"
 "Language: English\n"
@@ -17,51 +17,55 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPath-1: .\n"
 
-#: ../mystickymenu.php:73
+#: ../mystickymenu.php:66
 msgid "myStickymenu Settings"
 msgstr "myStickymenu Postavke"
 
-#: ../mystickymenu.php:102
+#: ../mystickymenu.php:95
 msgid "myStickymenu Options"
 msgstr "myStickymenu Opcije"
 
-#: ../mystickymenu.php:109
+#: ../mystickymenu.php:102
 msgid "Sticky Class"
 msgstr "Sticky klasa"
 
-#: ../mystickymenu.php:117
+#: ../mystickymenu.php:110
 msgid "Sticky z-index"
 msgstr "Sticky z-index"
 
-#: ../mystickymenu.php:125
+#: ../mystickymenu.php:118
 msgid "Sticky Background Color"
 msgstr "Sticky pozadinska boja"
 
-#: ../mystickymenu.php:133
+#: ../mystickymenu.php:126
 msgid "Sticky Opacity"
 msgstr "Sticky prozirnost"
 
-#: ../mystickymenu.php:141
+#: ../mystickymenu.php:134
 msgid "Sticky Transition Time"
 msgstr "Sticky vrijeme tranzicije"
 
-#: ../mystickymenu.php:149
+#: ../mystickymenu.php:142
 msgid "Disable at Small Screen Sizes"
 msgstr "Onemogući na malim ekranima"
 
-#: ../mystickymenu.php:157
-msgid "Make visible when scroled"
+#: ../mystickymenu.php:150
+msgid "Make visible when Scrolled"
 msgstr "Učini vidljivim kad se skroluje"
 
-#: ../mystickymenu.php:165
+#: ../mystickymenu.php:158
+msgid "Make visible when scrolled on Homepage"
+msgstr "Učini vidljivim kad se skroluje na Homepage-u"
+
+#: ../mystickymenu.php:166
 msgid "Fade or slide effect"
 msgstr "Fade ili Slide efekt"
 
-#: ../mystickymenu.php:173
+#: ../mystickymenu.php:174
 msgid ".myfixed css class"
 msgstr ".myfixed css klasa"
 
-#: ../mystickymenu.php:271
+#: ../mystickymenu.php:258
 msgid ""
 "Add nice modern sticky menu or header to any theme. Defaults works for "
 "Twenty Thirteen theme. <br />For other themes change 'Sticky Class' to div "
@@ -72,39 +76,39 @@ msgstr ""
 "klasu' u div klasu za koju želite da bude sticky. Takođe, možete koristiti i "
 "div ID."
 
-#: ../mystickymenu.php:283
+#: ../mystickymenu.php:270
 msgid "menu or header div class or id."
 msgstr "div klasa menija ili zaglavlja."
 
-#: ../mystickymenu.php:309
+#: ../mystickymenu.php:296
 msgid "numbers 1-100."
 msgstr "brojevi 1-100."
 
-#: ../mystickymenu.php:319
+#: ../mystickymenu.php:306
 msgid "in seconds."
 msgstr "u sekundama."
 
-#: ../mystickymenu.php:328
+#: ../mystickymenu.php:315
 msgid "less than"
 msgstr "manje od"
 
-#: ../mystickymenu.php:333
+#: ../mystickymenu.php:320
 msgid "px width, 0  to disable."
 msgstr "px širine. 0 da biste onemogućili opciju."
 
-#: ../mystickymenu.php:342
+#: ../mystickymenu.php:329 ../mystickymenu.php:343
 msgid "after"
 msgstr "nakon"
 
-#: ../mystickymenu.php:347
+#: ../mystickymenu.php:334 ../mystickymenu.php:348
 msgid "px. (scroll)"
 msgstr "px. (scroll)"
 
-#: ../mystickymenu.php:358
+#: ../mystickymenu.php:359
 msgid "Checked is slide, unchecked is fade."
 msgstr "Označeno je slide, neoznačeno je fade."
 
-#: ../mystickymenu.php:367
+#: ../mystickymenu.php:368
 msgid ""
 "Add/Edit .myfixed css class to change sticky menu style. Leave it blank for "
 "default style."
@@ -112,18 +116,18 @@ msgstr ""
 "Dodajte/Uredite .myfixed css klasu da biste promenili izgled sticky menija. "
 "Za podrazumevani izgled, ostavite nepopunjeno. "
 
-#: ../mystickymenu.php:374
+#: ../mystickymenu.php:375
 msgid "Default style: "
 msgstr "Podrazumevani izgled: "
 
-#: ../mystickymenu.php:376
+#: ../mystickymenu.php:377
 msgid ""
 "If you want to change sticky hover color first add default style and than: "
 msgstr ""
 "Ako želite da promenite sticky hover boju, prvo dodajte podrazumevani stil i "
 "zatim: "
 
-#: ../mystickymenu.php:378
+#: ../mystickymenu.php:379
 msgid ""
 "More examples <a href='http://wordpress.transformnews.com/tutorials/"
 "mystickymenu-extended-style-functionality-using-myfixed-sticky-"
