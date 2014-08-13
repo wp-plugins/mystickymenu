@@ -27,6 +27,9 @@ Install like any other plugin. After install activate. If using template other t
 = How to find Sticky Class, what should I enter here? =
 So this depends on what you want to make sticky and what theme do you use, but for example if you want your menu to be sticky, than you can examine the code (in firefox right click and “View page source”) and find div in which your menu is situated. This div have some class or id, and that’s the Sticky Class we need. If using class than don’t forget to ad dot (.) in front of class name, or hash (#) in front of id name in Sticky Class field. Twenty Thirteen default working class is ".navbar" without of quotes.
 
+= Is there any way to restrict the width to the width of the header, rather than it being full width? =
+Yes, just leave "Sticky Background Color" field blank (clear). Than if needed define custom background color for sticky header inside ".myfixed css class" field using .myfixed class. 
+
 
 == Screenshots ==
 
@@ -35,6 +38,9 @@ So this depends on what you want to make sticky and what theme do you use, but f
 
 
 == Changelog ==
+
+= 1.8 =
+* Added: "Make visible when scrolled on Homepage" after number of pixels. Now it’s possible to have one activation height for home page and another for the rest of the pages.
 
 = 1.7 =
 * Added multi language support (localization).
@@ -73,6 +79,9 @@ So this depends on what you want to make sticky and what theme do you use, but f
 * First release of myStickymenu plugin
 
 == Upgrade Notice ==
+
+= 1.8 =
+* Added: "Make visible when scrolled on Homepage" after number of pixels. Now it’s possible to have one activation height for home page and another for the rest of the pages.
 
 = 1.7 =
 * Added multi language support (localization).
