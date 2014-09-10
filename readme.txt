@@ -3,7 +3,7 @@ Contributors: damiroquai
 Donate link: http://wordpress.transformnews.com
 Tags: sticky menu, twentythirteen, twenty-thirteen, plugin, menu, jquery, sticky header, header, sticky, sticky navigation
 Requires at least: 3.5.1
-Tested up to: 3.9.2
+Tested up to: 4.0
 Stable tag: 1.7
 License: GPLv2 or later
 
