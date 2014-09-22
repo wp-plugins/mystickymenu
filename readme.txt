@@ -4,7 +4,7 @@ Donate link: http://wordpress.transformnews.com
 Tags: sticky menu, twentythirteen, twenty-thirteen, plugin, menu, jquery, sticky header, header, sticky, sticky navigation
 Requires at least: 3.5.1
 Tested up to: 4.0
-Stable tag: 1.7
+Stable tag: 1.8
 License: GPLv2 or later
 
 This modern lightweight plugin will made your menu or header sticky on top of page, after desired number of pixels when scrolled.
@@ -37,6 +37,10 @@ Yes, just leave "Sticky Background Color" field blank (clear). Than if needed de
 
 
 == Changelog ==
+
+= 1.8 =
+* Added: "Make visible when scrolled on Homepage" after number of pixels. Now it’s possible to have one activation height for home page and another for the rest of the pages.
+* Added German language
 
 = 1.7 =
 * Added multi language support (localization).
