@@ -30,6 +30,7 @@ So this depends on what you want to make sticky and what theme do you use, but f
 = Is there any way to restrict the width to the width of the header, rather than it being full width? =
 Yes, just leave "Sticky Background Color" field blank (clear). Than if needed define custom background color for sticky header inside ".myfixed css class" field using .myfixed class. 
 
+
 == Screenshots ==
 
 1.  screenshot-1.png shows administration settings.
@@ -79,6 +80,9 @@ Yes, just leave "Sticky Background Color" field blank (clear). Than if needed de
 * First release of myStickymenu plugin
 
 == Upgrade Notice ==
+
+= 1.8 =
+* Added: "Make visible when scrolled on Homepage" after number of pixels. Now it’s possible to have one activation height for home page and another for the rest of the pages.
 
 = 1.7 =
 * Added multi language support (localization).

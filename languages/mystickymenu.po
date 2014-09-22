@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: myStickymenu\n"
-"POT-Creation-Date: 2014-07-29 00:58+0100\n"
-"PO-Revision-Date: 2014-07-29 00:58+0100\n"
+"POT-Creation-Date: 2014-08-12 18:04+0100\n"
+"PO-Revision-Date: 2014-08-12 18:04+0100\n"
 "Last-Translator: Damir Babojelic <jahmirda@gmail.com>\n"
 "Language-Team: TFN <jahmirda@gmail.com>\n"
 "Language: English\n"
@@ -17,105 +17,109 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPath-1: .\n"
 
-#: ../mystickymenu.php:73
+#: ../mystickymenu.php:66
 msgid "myStickymenu Settings"
 msgstr ""
 
-#: ../mystickymenu.php:102
+#: ../mystickymenu.php:95
 msgid "myStickymenu Options"
 msgstr ""
 
-#: ../mystickymenu.php:109
+#: ../mystickymenu.php:102
 msgid "Sticky Class"
 msgstr ""
 
-#: ../mystickymenu.php:117
+#: ../mystickymenu.php:110
 msgid "Sticky z-index"
 msgstr ""
 
-#: ../mystickymenu.php:125
+#: ../mystickymenu.php:118
 msgid "Sticky Background Color"
 msgstr ""
 
-#: ../mystickymenu.php:133
+#: ../mystickymenu.php:126
 msgid "Sticky Opacity"
 msgstr ""
 
-#: ../mystickymenu.php:141
+#: ../mystickymenu.php:134
 msgid "Sticky Transition Time"
 msgstr ""
 
-#: ../mystickymenu.php:149
+#: ../mystickymenu.php:142
 msgid "Disable at Small Screen Sizes"
 msgstr ""
 
-#: ../mystickymenu.php:157
-msgid "Make visible when scroled"
+#: ../mystickymenu.php:150
+msgid "Make visible when Scrolled"
 msgstr ""
 
-#: ../mystickymenu.php:165
+#: ../mystickymenu.php:158
+msgid "Make visible when scrolled on Homepage"
+msgstr ""
+
+#: ../mystickymenu.php:166
 msgid "Fade or slide effect"
 msgstr ""
 
-#: ../mystickymenu.php:173
+#: ../mystickymenu.php:174
 msgid ".myfixed css class"
 msgstr ""
 
-#: ../mystickymenu.php:271
+#: ../mystickymenu.php:258
 msgid ""
 "Add nice modern sticky menu or header to any theme. Defaults works for "
 "Twenty Thirteen theme. <br />For other themes change 'Sticky Class' to div "
 "class desired to be sticky (div id can be used too)."
 msgstr ""
 
-#: ../mystickymenu.php:283
+#: ../mystickymenu.php:270
 msgid "menu or header div class or id."
 msgstr ""
 
-#: ../mystickymenu.php:309
+#: ../mystickymenu.php:296
 msgid "numbers 1-100."
 msgstr ""
 
-#: ../mystickymenu.php:319
+#: ../mystickymenu.php:306
 msgid "in seconds."
 msgstr ""
 
-#: ../mystickymenu.php:328
+#: ../mystickymenu.php:315
 msgid "less than"
 msgstr ""
 
-#: ../mystickymenu.php:333
+#: ../mystickymenu.php:320
 msgid "px width, 0  to disable."
 msgstr ""
 
-#: ../mystickymenu.php:342
+#: ../mystickymenu.php:329 ../mystickymenu.php:343
 msgid "after"
 msgstr ""
 
-#: ../mystickymenu.php:347
+#: ../mystickymenu.php:334 ../mystickymenu.php:348
 msgid "px. (scroll)"
 msgstr ""
 
-#: ../mystickymenu.php:358
+#: ../mystickymenu.php:359
 msgid "Checked is slide, unchecked is fade."
 msgstr ""
 
-#: ../mystickymenu.php:367
+#: ../mystickymenu.php:368
 msgid ""
 "Add/Edit .myfixed css class to change sticky menu style. Leave it blank for "
 "default style."
 msgstr ""
 
-#: ../mystickymenu.php:374
+#: ../mystickymenu.php:375
 msgid "Default style: "
 msgstr ""
 
-#: ../mystickymenu.php:376
+#: ../mystickymenu.php:377
 msgid ""
 "If you want to change sticky hover color first add default style and than: "
 msgstr ""
 
-#: ../mystickymenu.php:378
+#: ../mystickymenu.php:379
 msgid ""
 "More examples <a href='http://wordpress.transformnews.com/tutorials/"
 "mystickymenu-extended-style-functionality-using-myfixed-sticky-"
