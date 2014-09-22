@@ -41,6 +41,7 @@ Yes, just leave "Sticky Background Color" field blank (clear). Than if needed de
 
 = 1.8 =
 * Added: "Make visible when scrolled on Homepage" after number of pixels. Now it’s possible to have one activation height for home page and another for the rest of the pages.
+* Added German language
 
 = 1.7 =
 * Added multi language support (localization).

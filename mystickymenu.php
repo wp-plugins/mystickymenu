@@ -274,7 +274,7 @@ class MyStickyMenuPage
 	public function myfixed_zindex_callback()
 	{
 		printf(
-			'<p class="description"><input type="text" size="8" id="myfixed_zindex" name="mysticky_option_name[myfixed_zindex]" value="%s" /></p>',
+			'<p class="description"><input type="number" class="small-text" min="0" step="1" id="myfixed_zindex" name="mysticky_option_name[myfixed_zindex]" value="%s" /></p>',
 			isset( $this->options['myfixed_zindex'] ) ? esc_attr( $this->options['myfixed_zindex']) : ''
 		);
 	}
@@ -282,7 +282,7 @@ class MyStickyMenuPage
 	public function myfixed_bgcolor_callback()
 	{
 		printf(
-			'<p class="description"><input type="text" size="8" id="myfixed_bgcolor" name="mysticky_option_name[myfixed_bgcolor]" class="my-color-field" value="%s" /></p> ' ,
+			'<p class="description"><input type="text" id="myfixed_bgcolor" name="mysticky_option_name[myfixed_bgcolor]" class="my-color-field" value="%s" /></p> ' ,
 			isset( $this->options['myfixed_bgcolor'] ) ? esc_attr( $this->options['myfixed_bgcolor']) : ''
 		);
 	}
@@ -290,7 +290,7 @@ class MyStickyMenuPage
 	public function myfixed_opacity_callback()
 	{
 		printf(
-			'<p class="description"><input type="text" size="4" id="myfixed_opacity" name="mysticky_option_name[myfixed_opacity]"  value="%s" /> ',
+			'<p class="description"><input type="number" class="small-text" min="0" step="1" max="100" id="myfixed_opacity" name="mysticky_option_name[myfixed_opacity]"  value="%s" /> ',
 			isset( $this->options['myfixed_opacity'] ) ? esc_attr( $this->options['myfixed_opacity']) : ''
 		);
 		echo __("numbers 1-100.", 'mystickymenu');
@@ -300,7 +300,7 @@ class MyStickyMenuPage
 	public function myfixed_transition_time_callback()
 	{
 		printf(
-			'<p class="description"><input type="text" size="4" id="myfixed_transition_time" name="mysticky_option_name[myfixed_transition_time]" value="%s" /> ',
+			'<p class="description"><input type="number" class="small-text" min="0" step="0.1" id="myfixed_transition_time" name="mysticky_option_name[myfixed_transition_time]" value="%s" /> ',
 			isset( $this->options['myfixed_transition_time'] ) ? esc_attr( $this->options['myfixed_transition_time']) : ''
 		);
 		echo __("in seconds.", 'mystickymenu');
@@ -314,7 +314,7 @@ class MyStickyMenuPage
 		);
 		echo __("less than", 'mystickymenu');
 		printf(
-		' <input type="text" size="4" id="myfixed_disable_small_screen" name="mysticky_option_name[myfixed_disable_small_screen]" value="%s" />',
+		' <input type="number" class="small-text" min="0" step="1" id="myfixed_disable_small_screen" name="mysticky_option_name[myfixed_disable_small_screen]" value="%s" />',
 			isset( $this->options['myfixed_disable_small_screen'] ) ? esc_attr( $this->options['myfixed_disable_small_screen']) : ''
 		);
 		echo __("px width, 0  to disable.", 'mystickymenu');
@@ -328,7 +328,7 @@ class MyStickyMenuPage
 		);
 		echo __("after", 'mystickymenu');
 		printf(
-		' <input type="text" size="4" id="mysticky_active_on_height" name="mysticky_option_name[mysticky_active_on_height]" value="%s" />',
+		' <input type="number" class="small-text" min="0" step="1" id="mysticky_active_on_height" name="mysticky_option_name[mysticky_active_on_height]" value="%s" />',
 			isset( $this->options['mysticky_active_on_height'] ) ? esc_attr( $this->options['mysticky_active_on_height']) : ''
 		);
 		echo __("px. (scroll)", 'mystickymenu');
@@ -342,7 +342,7 @@ class MyStickyMenuPage
 		);
 		echo __("after", 'mystickymenu');
 		printf(
-		' <input type="text" size="4" id="mysticky_active_on_height_home" name="mysticky_option_name[mysticky_active_on_height_home]" value="%s" />',
+		' <input type="number" class="small-text" min="0" step="1" id="mysticky_active_on_height_home" name="mysticky_option_name[mysticky_active_on_height_home]" value="%s" />',
 			isset( $this->options['mysticky_active_on_height_home'] ) ? esc_attr( $this->options['mysticky_active_on_height_home']) : ''
 		);
 		echo __("px. (scroll)", 'mystickymenu');
