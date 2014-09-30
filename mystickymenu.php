@@ -274,7 +274,7 @@ class MyStickyMenuPage
 	public function myfixed_zindex_callback()
 	{
 		printf(
-			'<p class="description"><input type="number" class="small-text" min="0" step="1" id="myfixed_zindex" name="mysticky_option_name[myfixed_zindex]" value="%s" /></p>',
+			'<p class="description"><input type="number" min="0" max="2147483647" step="1" id="myfixed_zindex" name="mysticky_option_name[myfixed_zindex]" value="%s" /></p>',
 			isset( $this->options['myfixed_zindex'] ) ? esc_attr( $this->options['myfixed_zindex']) : ''
 		);
 	}
