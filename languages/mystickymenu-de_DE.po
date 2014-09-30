@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: myStickymenu\n"
-"POT-Creation-Date: 2014-08-20 21:14+0100\n"
-"PO-Revision-Date: 2014-08-20 21:14+0100\n"
+"POT-Creation-Date: 2014-09-30 12:27+0100\n"
+"PO-Revision-Date: 2014-09-30 12:35+0100\n"
 "Last-Translator: Damir Babojelic <jahmirda@gmail.com>\n"
 "Language-Team: Schelli <mail@schelli.eu>\n"
 "Language: de_DE\n"
@@ -50,12 +50,12 @@ msgid "Disable at Small Screen Sizes"
 msgstr "Deaktivierung bei Bildschirmbreiten"
 
 #: ../mystickymenu.php:150
-msgid "Make visible when Scrolled"
+msgid "Make visible when scroled"
 msgstr "Einblendung"
 
 #: ../mystickymenu.php:158
-msgid "Make visible when scrolled on Homepage"
-msgstr "Einblendung on Homepage"
+msgid "Make visible when scroled on homepage"
+msgstr "Einblendung  (Startseite)"
 
 #: ../mystickymenu.php:166
 msgid "Fade or slide effect"
