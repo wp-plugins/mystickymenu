@@ -3,27 +3,20 @@
 	Plugin Name: myStickymenu 
 	Plugin URI: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269
 	Description: Simple sticky (fixed on top) menu implementation for default Twentythirteen navigation menu. For other themes, after install go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id.
-	Version: 1.8
+	Version: 1.8.1
 	Author: m.r.d.a
 	Text domain: mystickymenu
 	Domain Path: /languages
 	License: GPLv2 or later
 	*/
 
-// Block direct acess to the file
 defined('ABSPATH') or die("Cannot access pages directly.");
 
-// Add plugin admin settings by Otto
 class MyStickyMenuPage
 {
-/**
-* Holds the values to be used in the fields callbacks
-*/
+
     private $options;
 
-/**
-* Start up
-*/
 	public function __construct()
 	{
 		add_action( 'admin_menu', array( $this, 'add_plugin_page' ) );
@@ -38,9 +31,6 @@ class MyStickyMenuPage
 		load_plugin_textdomain('mystickymenu', FALSE, dirname(plugin_basename(__FILE__)).'/languages/');
 	}
 	
-/**
-* Add options page
-*/
 	public function add_plugin_page()
 	{
 		// This page will be under "Settings"
@@ -53,9 +43,6 @@ class MyStickyMenuPage
 		);
 	}
 
-/**
-* Options page callback
-*/
 	public function create_admin_page()
 	{
 		// Set class property
@@ -66,7 +53,6 @@ class MyStickyMenuPage
 			<h2><?php _e('myStickymenu Settings', 'mystickymenu'); ?></h2>       
 			<form method="post" action="options.php">
 			<?php
-				// This prints out all hidden setting fields
 				settings_fields( 'mysticky_option_group' );   
 				do_settings_sections( 'my-stickymenu-settings' );
 				submit_button(); 
@@ -76,35 +62,30 @@ class MyStickyMenuPage
 		<?php
 	}
 	
-/**
-* Register and add settings
-*/
 	public function page_init()
 	{   
 		global $id, $title, $callback, $page;     
 		register_setting(
-			'mysticky_option_group', // Option group
-			'mysticky_option_name', // Option name
-			array( $this, 'sanitize' ) // Sanitize
+			'mysticky_option_group',
+			'mysticky_option_name',
+			array( $this, 'sanitize' )
 		);
 		
 		add_settings_field( $id, $title, $callback, $page, $section = 'default', $args = array() );
 
 		add_settings_section(
-			'setting_section_id', // ID
-			__("myStickymenu Options", 'mystickymenu'), // Title
-			array( $this, 'print_section_info' ), // Callback
-			'my-stickymenu-settings' // Page
+			'setting_section_id',
+			__("myStickymenu Options", 'mystickymenu'),
+			array( $this, 'print_section_info' ),
+			'my-stickymenu-settings'
 		);
-
 		add_settings_field(
-			'mysticky_class_selector', // ID
-			__("Sticky Class", 'mystickymenu'), // Title 
-			array( $this, 'mysticky_class_selector_callback' ), // Callback
-			'my-stickymenu-settings', // Page
-			'setting_section_id' // Section         
+			'mysticky_class_selector',
+			__("Sticky Class", 'mystickymenu'),
+			array( $this, 'mysticky_class_selector_callback' ),
+			'my-stickymenu-settings',
+			'setting_section_id'
 		);
-
 		add_settings_field(
 			'myfixed_zindex', 
 			__("Sticky z-index", 'mystickymenu'),
@@ -112,7 +93,6 @@ class MyStickyMenuPage
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
-
 		add_settings_field(
 			'myfixed_bgcolor', 
 			__("Sticky Background Color", 'mystickymenu'),
@@ -120,7 +100,6 @@ class MyStickyMenuPage
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
-
 		add_settings_field(
 			'myfixed_opacity', 
 			__("Sticky Opacity", 'mystickymenu'),
@@ -128,7 +107,6 @@ class MyStickyMenuPage
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
-
 		add_settings_field(
 			'myfixed_transition_time', 
 			__("Sticky Transition Time", 'mystickymenu'),
@@ -136,7 +114,6 @@ class MyStickyMenuPage
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
-
 		add_settings_field(
 			'myfixed_disable_small_screen', 
 			__("Disable at Small Screen Sizes", 'mystickymenu'),
@@ -144,23 +121,20 @@ class MyStickyMenuPage
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
-
 		add_settings_field(
 			'mysticky_active_on_height', 
-			__("Make visible when scroled", 'mystickymenu'),
+			__("Make visible on Scroll", 'mystickymenu'),
 			array( $this, 'mysticky_active_on_height_callback' ), 
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
-
 		add_settings_field(
 			'mysticky_active_on_height_home', 
-			__("Make visible when scroled on homepage", 'mystickymenu'),
+			__("Make visible on Scroll at homepage", 'mystickymenu'),
 			array( $this, 'mysticky_active_on_height_home_callback' ), 
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
-
 		add_settings_field(
 			'myfixed_fade', 
 			__("Fade or slide effect", 'mystickymenu'),
@@ -168,11 +142,17 @@ class MyStickyMenuPage
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);	
-
 		add_settings_field(
 			'myfixed_cssstyle', 
 			__(".myfixed css class", 'mystickymenu'),
 			array( $this, 'myfixed_cssstyle_callback' ), 
+			'my-stickymenu-settings', 
+			'setting_section_id'
+		);
+		add_settings_field(
+			'disable_css', 
+			__("Disable CSS style", 'mystickymenu'),
+			array( $this, 'disable_css_callback' ), 
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
@@ -211,20 +191,19 @@ class MyStickyMenuPage
 
 		if( isset( $input['myfixed_fade'] ) )
 			$new_input['myfixed_fade'] = sanitize_text_field( $input['myfixed_fade'] ); 
-
+			
 		if( isset( $input['myfixed_cssstyle'] ) )
 			$new_input['myfixed_cssstyle'] = sanitize_text_field( $input['myfixed_cssstyle'] );
+			
+		if( isset( $input['disable_css'] ) )
+			$new_input['disable_css'] = sanitize_text_field( $input['disable_css'] );	
 
 		return $new_input;
 	}
 
-/**
-* Load Defaults
-*/ 	
 	public function mysticky_default_options() {
 
 		global $options;
-
 		$default = array(
 
 				'mysticky_class_selector' => '.navbar',
@@ -236,7 +215,8 @@ class MyStickyMenuPage
 				'mysticky_active_on_height' => '320',
 				'mysticky_active_on_height_home' => '320',
 				'myfixed_fade' => false,
-				'myfixed_cssstyle' => '.myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; }'	
+				'myfixed_cssstyle' => '.myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; }',
+				'disable_css' => false
 			);
 
 		if ( get_option('mysticky_option_name') == false ) {	
@@ -250,17 +230,11 @@ class MyStickyMenuPage
 		wp_enqueue_script( 'my-script-handle', plugins_url('js/iris-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
 	}
 
-/** 
-* Print the Section text
-*/
 	public function print_section_info()
 	{
 		echo __("Add nice modern sticky menu or header to any theme. Defaults works for Twenty Thirteen theme. <br />For other themes change 'Sticky Class' to div class desired to be sticky (div id can be used too).", 'mystickymenu');
     }
 
-/** 
-* Get the settings option array and print one of its values
-*/
 	public function mysticky_class_selector_callback()
 	{
 		printf(
@@ -331,7 +305,7 @@ class MyStickyMenuPage
 		' <input type="number" class="small-text" min="0" step="1" id="mysticky_active_on_height" name="mysticky_option_name[mysticky_active_on_height]" value="%s" />',
 			isset( $this->options['mysticky_active_on_height'] ) ? esc_attr( $this->options['mysticky_active_on_height']) : ''
 		);
-		echo __("px. (scroll)", 'mystickymenu');
+		echo __("px.", 'mystickymenu');
 		echo '</p>';
 	}
 
@@ -345,7 +319,7 @@ class MyStickyMenuPage
 		' <input type="number" class="small-text" min="0" step="1" id="mysticky_active_on_height_home" name="mysticky_option_name[mysticky_active_on_height_home]" value="%s" />',
 			isset( $this->options['mysticky_active_on_height_home'] ) ? esc_attr( $this->options['mysticky_active_on_height_home']) : ''
 		);
-		echo __("px. (scroll)", 'mystickymenu');
+		echo __("px.", 'mystickymenu');
 		echo '</p>';
 	}
 
@@ -380,14 +354,22 @@ class MyStickyMenuPage
 		echo'</p>';
 	}
 	
+	public function disable_css_callback()
+	{
+		printf(
+			'<p class="description"><input id="%1$s" name="mysticky_option_name[disable_css]" type="checkbox" %2$s /> ',
+			'disable_css',
+			checked( isset( $this->options['disable_css'] ), true, false ) 
+		);
+		echo __("Use this option if you plan to include CSS Style manually", 'mystickymenu');
+		echo '</p>';	
+	} 
+	
 }
 
 	if( is_admin() )
 	$my_settings_page = new MyStickyMenuPage();
-
-// end plugin admin settings
-
-// Remove default option for more link that jumps at the midle of page and its covered by menu
+	
 
 	function mysticky_remove_more_jump_link($link) 
 	{ 
@@ -403,12 +385,19 @@ class MyStickyMenuPage
 
 	add_filter('the_content_more_link', 'mysticky_remove_more_jump_link');
 
-// Create style from options
 
 	function mysticky_build_stylesheet_content() {
 
 	$mysticky_options = get_option( 'mysticky_option_name' );
-
+	
+		if (isset($mysticky_options['disable_css'])){
+				 //do nothing
+			} else {
+				$mysticky_options['disable_css'] = false;
+		};
+	
+if  ($mysticky_options ['disable_css'] == false ){
+	
     echo
 '<style type="text/css">';
 	if ( is_user_logged_in() ) {
@@ -457,6 +446,7 @@ class MyStickyMenuPage
 '</style>
 	';
 	}
+}
 	
 	add_action('wp_head', 'mysticky_build_stylesheet_content');
 
@@ -471,7 +461,6 @@ class MyStickyMenuPage
 				$mysticky_options['mysticky_active_on_height_home'] = $mysticky_options['mysticky_active_on_height'];
 		};
 		
-		// if set to 0 => display default active_on_height
 		if  ($mysticky_options['mysticky_active_on_height_home'] == 0 ){
 			$mysticky_options['mysticky_active_on_height_home'] = $mysticky_options['mysticky_active_on_height'];
 		};
@@ -480,11 +469,9 @@ class MyStickyMenuPage
 			$mysticky_options['mysticky_active_on_height'] = $mysticky_options['mysticky_active_on_height_home'];
 		};
 		
-		// Register scripts
-			wp_register_script('mystickymenu', WP_PLUGIN_URL. '/mystickymenu/js/mystickymenu.js', false,'1.0.0', true);
+			wp_register_script('mystickymenu', WP_PLUGIN_URL. '/mystickymenu/js/mystickymenu.min.js', false,'1.0.0', true);
 			wp_enqueue_script( 'mystickymenu' );
 
-		// Localize mystickymenu.js script with myStickymenu options
 		$mysticky_translation_array = array( 
 		    'mysticky_string' => $mysticky_options['mysticky_class_selector'] ,
 			'mysticky_active_on_height_string' => $mysticky_options['mysticky_active_on_height'],

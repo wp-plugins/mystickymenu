@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: myStickymenu\n"
-"POT-Creation-Date: 2014-08-12 18:05+0100\n"
-"PO-Revision-Date: 2014-08-12 18:05+0100\n"
+"POT-Creation-Date: 2014-12-23 01:53+0100\n"
+"PO-Revision-Date: 2014-12-23 01:54+0100\n"
 "Last-Translator: Damir Babojelic <jahmirda@gmail.com>\n"
 "Language-Team: TFN <jahmirda@gmail.com>\n"
 "Language: English\n"
@@ -17,55 +17,59 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPath-1: .\n"
 
-#: ../mystickymenu.php:66
+#: ../mystickymenu.php:53
 msgid "myStickymenu Settings"
 msgstr "myStickymenu Postavke"
 
-#: ../mystickymenu.php:95
+#: ../mystickymenu.php:78
 msgid "myStickymenu Options"
 msgstr "myStickymenu Opcije"
 
-#: ../mystickymenu.php:102
+#: ../mystickymenu.php:84
 msgid "Sticky Class"
 msgstr "Sticky klasa"
 
-#: ../mystickymenu.php:110
+#: ../mystickymenu.php:91
 msgid "Sticky z-index"
 msgstr "Sticky z-index"
 
-#: ../mystickymenu.php:118
+#: ../mystickymenu.php:98
 msgid "Sticky Background Color"
 msgstr "Sticky pozadinska boja"
 
-#: ../mystickymenu.php:126
+#: ../mystickymenu.php:105
 msgid "Sticky Opacity"
 msgstr "Sticky prozirnost"
 
-#: ../mystickymenu.php:134
+#: ../mystickymenu.php:112
 msgid "Sticky Transition Time"
 msgstr "Sticky vrijeme tranzicije"
 
-#: ../mystickymenu.php:142
+#: ../mystickymenu.php:119
 msgid "Disable at Small Screen Sizes"
 msgstr "Onemogući na malim ekranima"
 
-#: ../mystickymenu.php:150
-msgid "Make visible when Scrolled"
+#: ../mystickymenu.php:126
+msgid "Make visible on Scroll"
 msgstr "Učini vidljivim kad se skroluje"
 
-#: ../mystickymenu.php:158
-msgid "Make visible when scrolled on Homepage"
+#: ../mystickymenu.php:133
+msgid "Make visible on Scroll at homepage"
 msgstr "Učini vidljivim kad se skroluje na Homepage-u"
 
-#: ../mystickymenu.php:166
+#: ../mystickymenu.php:140
 msgid "Fade or slide effect"
 msgstr "Fade ili Slide efekt"
 
-#: ../mystickymenu.php:174
+#: ../mystickymenu.php:147
 msgid ".myfixed css class"
 msgstr ".myfixed css klasa"
 
-#: ../mystickymenu.php:258
+#: ../mystickymenu.php:154
+msgid "Disable CSS style"
+msgstr "Onemogući CSS "
+
+#: ../mystickymenu.php:235
 msgid ""
 "Add nice modern sticky menu or header to any theme. Defaults works for "
 "Twenty Thirteen theme. <br />For other themes change 'Sticky Class' to div "
@@ -76,39 +80,39 @@ msgstr ""
 "klasu' u div klasu za koju želite da bude sticky. Takođe, možete koristiti i "
 "div ID."
 
-#: ../mystickymenu.php:270
+#: ../mystickymenu.php:244
 msgid "menu or header div class or id."
 msgstr "div klasa menija ili zaglavlja."
 
-#: ../mystickymenu.php:296
+#: ../mystickymenu.php:270
 msgid "numbers 1-100."
 msgstr "brojevi 1-100."
 
-#: ../mystickymenu.php:306
+#: ../mystickymenu.php:280
 msgid "in seconds."
 msgstr "u sekundama."
 
-#: ../mystickymenu.php:315
+#: ../mystickymenu.php:289
 msgid "less than"
 msgstr "manje od"
 
-#: ../mystickymenu.php:320
+#: ../mystickymenu.php:294
 msgid "px width, 0  to disable."
 msgstr "px širine. 0 da biste onemogućili opciju."
 
-#: ../mystickymenu.php:329 ../mystickymenu.php:343
+#: ../mystickymenu.php:303 ../mystickymenu.php:317
 msgid "after"
 msgstr "nakon"
 
-#: ../mystickymenu.php:334 ../mystickymenu.php:348
-msgid "px. (scroll)"
-msgstr "px. (scroll)"
+#: ../mystickymenu.php:308 ../mystickymenu.php:322
+msgid "px."
+msgstr "px."
 
-#: ../mystickymenu.php:359
+#: ../mystickymenu.php:333
 msgid "Checked is slide, unchecked is fade."
 msgstr "Označeno je slide, neoznačeno je fade."
 
-#: ../mystickymenu.php:368
+#: ../mystickymenu.php:342
 msgid ""
 "Add/Edit .myfixed css class to change sticky menu style. Leave it blank for "
 "default style."
@@ -116,18 +120,18 @@ msgstr ""
 "Dodajte/Uredite .myfixed css klasu da biste promenili izgled sticky menija. "
 "Za podrazumevani izgled, ostavite nepopunjeno. "
 
-#: ../mystickymenu.php:375
+#: ../mystickymenu.php:349
 msgid "Default style: "
 msgstr "Podrazumevani izgled: "
 
-#: ../mystickymenu.php:377
+#: ../mystickymenu.php:351
 msgid ""
 "If you want to change sticky hover color first add default style and than: "
 msgstr ""
 "Ako želite da promenite sticky hover boju, prvo dodajte podrazumevani stil i "
 "zatim: "
 
-#: ../mystickymenu.php:379
+#: ../mystickymenu.php:353
 msgid ""
 "More examples <a href='http://wordpress.transformnews.com/tutorials/"
 "mystickymenu-extended-style-functionality-using-myfixed-sticky-"
@@ -136,6 +140,13 @@ msgstr ""
 "Više primera <a href='http://wordpress.transformnews.com/tutorials/"
 "mystickymenu-extended-style-functionality-using-myfixed-sticky-"
 "class-403'>ovde</a>."
+
+#: ../mystickymenu.php:364
+msgid "Use this option if you plan to include CSS Style manually"
+msgstr "Koristite ukoliko želite dodati CSS ručno"
+
+#~ msgid "px. (scroll)"
+#~ msgstr "px. (scroll)"
 
 #~ msgid "mymessage2"
 #~ msgstr "Bye"
