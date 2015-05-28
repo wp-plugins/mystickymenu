@@ -215,8 +215,7 @@ class MyStickyMenuPage
 				'mysticky_active_on_height' => '320',
 				'mysticky_active_on_height_home' => '320',
 				'myfixed_fade' => false,
-				'myfixed_cssstyle' => '.myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; }',
-				'disable_css' => false
+				'myfixed_cssstyle' => '.myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; }'
 			);
 
 		if ( get_option('mysticky_option_name') == false ) {	
