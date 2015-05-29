@@ -1,6 +1,6 @@
 === myStickymenu ===
 Contributors: damiroquai
-Donate link: http://wordpress.transformnews.com
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LCW5R5MHJADQN
 Tags: sticky menu, twentythirteen, twenty-thirteen, plugin, menu, jquery, sticky header, header, sticky, sticky navigation
 Requires at least: 3.5.1
 Tested up to: 4.2.2
