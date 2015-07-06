@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: sticky menu, twentythirteen, twenty-thirteen, plugin, menu, jquery, sticky header, header, sticky, sticky navigation
 Requires at least: 3.5.1
 Tested up to: 4.2.2
-Stable tag: 1.8.1
+Stable tag: 1.8.2
 License: GPLv2 or later
 
 This modern lightweight plugin will made your menu or header sticky on top of page, after desired number of pixels when scrolled.
