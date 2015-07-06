@@ -1,6 +1,6 @@
 === myStickymenu ===
 Contributors: damiroquai
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LCW5R5MHJADQN
+Donate link: http://wordpress.transformnews.com/contact
 Tags: sticky menu, twentythirteen, twenty-thirteen, plugin, menu, jquery, sticky header, header, sticky, sticky navigation
 Requires at least: 3.5.1
 Tested up to: 4.2.2
@@ -52,6 +52,9 @@ Also check another header example here - https://wordpress.org/support/topic/log
 
 == Changelog ==
 
+= 1.8.2 =
+* Fixed: js load on https
+
 = 1.8.1 =
 * Added: “Disable CSS“. If you plan to add style manually to your style.css in order to improve your site performance disable plugin CSS style printed by default in document head element.
 * Minimized mystickymenu.js to improve performance.
@@ -97,6 +100,9 @@ Also check another header example here - https://wordpress.org/support/topic/log
 * First release of myStickymenu plugin
 
 == Upgrade Notice ==
+
+= 1.8.2 =
+* Fixed: js load on https
 
 = 1.8.1 =
 * Added: “Disable CSS“. If you plan to add style manually to your style.css in order to improve your site performance disable plugin CSS style printed by default in document head element.
